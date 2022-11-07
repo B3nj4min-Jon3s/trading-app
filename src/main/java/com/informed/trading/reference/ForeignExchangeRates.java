@@ -15,7 +15,6 @@ import java.net.URL;
 
 public class ForeignExchangeRates extends UniqueData implements ForeignExchange {
 
-    private int id;
     private static final String EXCHANGE_API_KEY = "0b25bd30f390d77d5b4c3745";
     private static final String URL_STR = "https://v6.exchangerate-api.com/v6/"+EXCHANGE_API_KEY+"/latest/";
     private static final String[] CURRENCY_ARRAY = {"GBP", "USD", "EUR", "YEN", "AUD"};

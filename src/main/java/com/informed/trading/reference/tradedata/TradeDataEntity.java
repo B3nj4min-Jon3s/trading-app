@@ -5,6 +5,7 @@ import com.informed.trading.reference.transactionaldata.UniqueData;
 import com.informed.trading.utils.Validation;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -25,20 +26,14 @@ public abstract class TradeDataEntity extends UniqueData {
 
     public TradeDataEntity(String name, String symbol) {
         super();
-        setName(name);
+        this.name = Validation.checkStringNotNullEmptyAndOnlyLetters(name, "Name");
         setSymbol(symbol);
 
     }
 
-    private void setName(String name) {
-        if(Validation.checkStringContainsOnlyLetters(name, "Name") &&
-        Validation.checkStringIsEmptyOrNull(name, "Name")) {
-            this.name = name;
-        }
-    }
-
     private void setSymbol(String symbol) {
-        if(symbol.equals("") || !symbol.matches("[a-zA-Z]{1,3}")) {
+        Validation.checkStringIsNullOrEmpty(symbol, "Symbol");
+        if(!symbol.matches("[a-zA-Z]{1,3}")) {
             throw new InvalidSymbolArgumentException("Please provide a valid symbol i.e. LND");
         } else {
             this.symbol = symbol.toUpperCase();

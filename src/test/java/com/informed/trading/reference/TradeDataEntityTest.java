@@ -15,7 +15,7 @@ class TradeDataEntityTest {
 
     @BeforeEach
     void setUp() {
-        sampleTadeEntity = new SampleTradeDataEntity(10, "Manchester", "MAN");
+        sampleTadeEntity = new SampleTradeDataEntity("Manchester", "MAN");
     }
 
     @AfterEach
@@ -34,12 +34,12 @@ class TradeDataEntityTest {
 
         @Test
         void shouldThrowSymbolArgumentExceptionWhenSymbolEmptyString() {
-            assertThrows(InvalidSymbolArgumentException.class, () -> new SampleTradeDataEntity(10,"Manchester", ""));
+            assertThrows(InvalidSymbolArgumentException.class, () -> new SampleTradeDataEntity("Manchester", ""));
         }
 
         @Test
         void shouldThrowNullPointerExceptionWhenSymbolNull() {
-            assertThrows(NullPointerException.class, () -> new SampleTradeDataEntity(10,"Manchester", null));
+            assertThrows(NullPointerException.class, () -> new SampleTradeDataEntity("Manchester", null));
         }
     }
 }

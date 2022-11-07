@@ -2,6 +2,7 @@ package com.informed.trading.server;
 
 import com.informed.trading.reference.transactionaldata.CounterParty;
 import com.informed.trading.reference.transactionaldata.UniqueData;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;

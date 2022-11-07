@@ -6,6 +6,7 @@ import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.reference.tradedata.Equity;
 import com.informed.trading.reference.ForeignExchangeRates;
 import com.informed.trading.utils.Validation;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +14,10 @@ import java.util.Date;
 @Entity
 @Table(name = "equity_trades")
 public class EquityTrade extends UniqueData {
+
+    @Autowired
+    @Transient
+    ForeignExchangeRates fe;
 
     @ManyToOne
     @JoinColumn(name = "counter_party_1_ID")
@@ -77,7 +82,6 @@ public class EquityTrade extends UniqueData {
     }
 
     public double getValueInCurrency(Currency currency) {
-        ForeignExchangeRates fe = new ForeignExchangeRates();
         double exchangeRate = fe.getExchangeRateFor(this.currency.getSymbol(), currency.getSymbol());
         return exchangeRate * getValueOfTrade();
     }

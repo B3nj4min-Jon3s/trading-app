@@ -3,8 +3,12 @@ package com.informed.trading.reference;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.informed.trading.config.ForeignExchangeConfig;
 import com.informed.trading.interfaces.ForeignExchange;
 import com.informed.trading.reference.transactionaldata.UniqueData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.InputStream;
@@ -12,25 +16,31 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@Component
+public class ForeignExchangeRates implements ForeignExchange {
 
-public class ForeignExchangeRates extends UniqueData implements ForeignExchange {
+    private final String EXCHANGE_API_KEY ;
+    private ForeignExchangeConfig fec;
 
-    private static final String EXCHANGE_API_KEY = "0b25bd30f390d77d5b4c3745";
-    private static final String URL_STR = "https://v6.exchangerate-api.com/v6/"+EXCHANGE_API_KEY+"/latest/";
-    private static final String[] CURRENCY_ARRAY = {"GBP", "USD", "EUR", "YEN", "AUD"};
+    private final  String URL_STR;
     private static final String GBP_STR = "GBP";
     private JsonObject gbpExchangeRates;
 
-    public ForeignExchangeRates() {
-        setup();
+    @Autowired
+    public ForeignExchangeRates( ForeignExchangeConfig fec) {
+        EXCHANGE_API_KEY = fec.getAPIKey();
+        this.fec = fec;
+
+        URL_STR = "https://v6.exchangerate-api.com/v6/"+EXCHANGE_API_KEY+"/latest/";
+         setup();
     }
 
     private void setup() {
         gbpExchangeRates = getCurrentExchangeRatesForCurrency("GBP");
-        System.out.println(gbpExchangeRates.get("USD"));
     }
 
     private JsonObject getCurrentExchangeRatesForCurrency(String currency) {
+        JsonObject jsonObject = new JsonObject();
         try {
             // Making Request
             URL url = new URL(createApiUrlForCurrency(currency));
@@ -38,17 +48,16 @@ public class ForeignExchangeRates extends UniqueData implements ForeignExchange 
             request.connect();
 
             // Convert to JSON
-            JsonParser jp = new JsonParser();
-            JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
-            JsonObject jsonobj = root.getAsJsonObject();
+            JsonObject jsonObjectRequest = JsonParser.parseReader(new InputStreamReader((InputStream) request.getContent()))
+                    .getAsJsonObject();
 
             // Accessing object
-            return jsonobj.getAsJsonObject("conversion_rates");
+            jsonObject = jsonObjectRequest.getAsJsonObject("conversion_rates");
         } catch (Exception e) {
+            System.out.println("Error connecting to Exchange Rate API");
             e.printStackTrace();
-            //TODO PROPER ERROR HANDLING
         }
-        return new JsonObject();
+        return jsonObject;
     }
 
     private String createApiUrlForCurrency(String currency) {

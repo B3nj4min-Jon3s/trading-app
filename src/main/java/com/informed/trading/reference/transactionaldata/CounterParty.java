@@ -5,16 +5,19 @@ import com.informed.trading.utils.Util;
 import com.informed.trading.utils.Validation;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "counter_parties")
 public class CounterParty extends UniqueData {
 
+    @NotNull
     private String name;
     private String phoneNumber;
     private String emailAddress;
     @ManyToOne
     @JoinColumn(name = "address_ID")
+    @NotNull
     private Address address;
 
     public CounterParty() {

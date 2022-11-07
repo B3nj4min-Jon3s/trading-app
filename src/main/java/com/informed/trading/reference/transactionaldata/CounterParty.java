@@ -23,7 +23,7 @@ public class CounterParty extends UniqueData {
     public CounterParty(String name, String phoneNumber, String emailAddress, Address address) {
         super();
         this.name = Validation.checkStringNotNullEmptyAndOnlyLettersNumbers(name, "Counter party name");
-        this.address = address;
+        this.address = (Address) Validation.checkObjectIsNotNullAndReturnObject(address, "address");
         setEmailAddressAndPhone(emailAddress, phoneNumber);
     }
 

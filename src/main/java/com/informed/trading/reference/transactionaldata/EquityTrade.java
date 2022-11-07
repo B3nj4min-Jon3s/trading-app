@@ -5,6 +5,7 @@ import com.informed.trading.exception.InvalidArgumentException;
 import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.reference.tradedata.Equity;
 import com.informed.trading.reference.ForeignExchangeRates;
+import com.informed.trading.reference.tradedata.Exchange;
 import com.informed.trading.utils.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +21,9 @@ public class EquityTrade extends UniqueData {
     ForeignExchangeRates fe;
 
     @ManyToOne
+    @JoinColumn(name = "exchange_id")
+    private Exchange exchange;
+    @ManyToOne
     @JoinColumn(name = "counter_party_1_ID")
     private CounterParty counterParty1;
     @ManyToOne
@@ -34,6 +38,16 @@ public class EquityTrade extends UniqueData {
     @OneToOne
     @JoinColumn(name = "currency_ID")
     private Currency currency;
+
+    public Exchange getExchange() {
+        return exchange;
+    }
+
+    public void setExchange(Exchange exchange) {
+        this.exchange = exchange;
+    }
+
+    public EquityTrade() {}
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
@@ -51,10 +65,9 @@ public class EquityTrade extends UniqueData {
         this.counterParty1 = counterParty1;
     }
 
-    public EquityTrade() {}
-
-    public EquityTrade(CounterParty counterParty1, CounterParty counterParty2, Date agreementDate, Equity equity, int amount, double price, Currency currency) {
+    public EquityTrade(CounterParty counterParty1, CounterParty counterParty2, Date agreementDate, Equity equity, int amount, double price, Currency currency, Exchange exchange) {
         super();
+        this.exchange = (Exchange) Validation.checkObjectIsNotNullAndReturnObject(exchange, "exchange");
         this.agreementDate = (Date) Validation.checkObjectIsNotNullAndReturnObject(agreementDate, "Agreement Date");
         this.equity =  (Equity) Validation.checkObjectIsNotNullAndReturnObject(equity, "Equity");
         this.amount = Validation.checkIntIsGreaterThanZero(amount, "Amount");
@@ -78,12 +91,24 @@ public class EquityTrade extends UniqueData {
     }
 
     public double getValueOfTrade() {
-        return amount * price;
+        return this.amount * this.price;
     }
 
     public double getValueInCurrency(Currency currency) {
         double exchangeRate = fe.getExchangeRateFor(this.currency.getSymbol(), currency.getSymbol());
         return exchangeRate * getValueOfTrade();
+    }
+
+    public void setAgreementDate(Date agreementDate) {
+        this.agreementDate = agreementDate;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public CounterParty getCounterParty1() {

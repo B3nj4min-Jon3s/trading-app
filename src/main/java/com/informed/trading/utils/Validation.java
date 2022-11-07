@@ -63,13 +63,16 @@ public class Validation {
           }
      }
 
-     public static boolean checkObjectIsNotNull(Object inputObject, String inputName) {
-          return inputObject != null;
+     public static Object checkObjectIsNotNullAndReturnObject(Object inputObject, String inputName) {
+          if(inputObject == null) {
+               throw new NullPointerException(inputName + ": cannot be null");
+          }
+          return inputObject;
      }
 
-     public static Object checkObjectIsNotNullAndReturnObject(Object inputObject, String inputName) {
+     public static boolean checkObjectIsNotNull(Object inputObject, String inputName) {
           if (inputObject == null) {
-               throw new EmptyArgumentException(inputName + ": is empty");
+               throw new NullPointerException(inputName + ": is empty");
           } else {
                return true;
           }

@@ -20,17 +20,6 @@ public class Validation {
           }
      }
 
-//     public static boolean checkStringIsEmptyOrNull(String input, String inputName) {
-//          if(input == null) {
-//               throw new NullPointerException("Please provide information for: " + inputName);
-//          }
-//          if(input.isEmpty()) {
-//               throw new EmptyArgumentException("Please provide information for: " + inputName);
-//          } else {
-//               return true;
-//          }
-//     }
-
      public static void checkStringIsNullOrEmpty(String input, String inputName) {
           if(checkStringIsNull(input)) {
                throw new NullPointerException("Please provide information for: " + inputName);

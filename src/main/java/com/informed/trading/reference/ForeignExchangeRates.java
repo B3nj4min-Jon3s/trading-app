@@ -27,7 +27,7 @@ public class ForeignExchangeRates implements ForeignExchange {
     private JsonObject gbpExchangeRates;
 
     @Autowired
-    public ForeignExchangeRates( ForeignExchangeConfig fec) {
+    public ForeignExchangeRates(ForeignExchangeConfig fec) {
         EXCHANGE_API_KEY = fec.getAPIKey();
         this.fec = fec;
 

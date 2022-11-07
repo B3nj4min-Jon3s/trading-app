@@ -30,7 +30,7 @@ public class Validation {
      }
 
      public static boolean checkStringContainsOnlyLettersAndNumbers(String str, String fieldName) {
-          if(!str.matches("[a-zA-Z0-9]{0,50}")) {
+          if(!str.matches("[a-zA-Z0-9\s]{0,50}")) {
                throw new InvalidArgumentException(fieldName + ": Please only use letters and numbers");
           } else {
                return true;
@@ -38,7 +38,7 @@ public class Validation {
      }
 
      public static boolean checkStringContainsOnlyLetters(String str, String fieldName) {
-          if(!str.matches("[a-zA-Z]{0,50}")) {
+          if(!str.matches("[a-zA-Z\s]{0,50}")) {
                throw new InvalidArgumentException("Please only use letters and numbers for: " + fieldName);
           } else {
                return true;

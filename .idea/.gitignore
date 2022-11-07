@@ -1,8 +1,0 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-
-
-*.class
-/.idea/*.xml
-/target/*.class

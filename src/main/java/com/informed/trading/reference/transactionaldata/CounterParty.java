@@ -9,9 +9,6 @@ import javax.persistence.*;
 @Table(name = "counter_parties")
 public class CounterParty extends UniqueData {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int id;
     private String name;
     private String phoneNumber;
     private String emailAddress;

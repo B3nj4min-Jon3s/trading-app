@@ -4,20 +4,45 @@ import com.informed.trading.exception.EmptyArgumentException;
 import com.informed.trading.exception.InvalidArgumentException;
 
 public class Validation {
-     public static boolean checkStringIsEmptyOrNull(String input, String inputName) {
+
+     public static boolean checkStringIsNull(String input) {
           if(input == null) {
+               return true;
+          } else {
+               return false;
+          }
+     }
+     public static boolean checkStringIsEmpty(String input) {
+          if(input.isEmpty()) {
+               return true;
+          } else {
+               return false;
+          }
+     }
+
+//     public static boolean checkStringIsEmptyOrNull(String input, String inputName) {
+//          if(input == null) {
+//               throw new NullPointerException("Please provide information for: " + inputName);
+//          }
+//          if(input.isEmpty()) {
+//               throw new EmptyArgumentException("Please provide information for: " + inputName);
+//          } else {
+//               return true;
+//          }
+//     }
+
+     public static void checkStringIsNullOrEmpty(String input, String inputName) {
+          if(checkStringIsNull(input)) {
                throw new NullPointerException("Please provide information for: " + inputName);
           }
-          if(input.isEmpty()) {
+          if(checkStringIsEmpty(input)) {
                throw new EmptyArgumentException("Please provide information for: " + inputName);
-          } else {
-               return true;
           }
      }
 
      public static boolean checkStringContainsOnlyLettersAndNumbers(String str, String fieldName) {
           if(!str.matches("[a-zA-Z0-9]{0,50}")) {
-               throw new InvalidArgumentException("Please only use letters and numbers for: " + fieldName);
+               throw new InvalidArgumentException(fieldName + ": Please only use letters and numbers");
           } else {
                return true;
           }
@@ -28,6 +53,24 @@ public class Validation {
                throw new InvalidArgumentException("Please only use letters and numbers for: " + fieldName);
           } else {
                return true;
+          }
+     }
+
+     public static String checkStringNotNullEmptyAndOnlyLetters(String str, String inputName) {
+          Validation.checkStringIsNullOrEmpty(str, inputName);
+          if(checkStringContainsOnlyLetters(str, inputName)) {
+               return str;
+          } else {
+               return "";
+          }
+     }
+
+     public static String checkStringNotNullEmptyAndOnlyLettersNumbers(String str, String inputName) {
+          Validation.checkStringIsNullOrEmpty(str, inputName);
+          if(checkStringContainsOnlyLettersAndNumbers(str, inputName)) {
+               return str;
+          } else {
+               return "";
           }
      }
 

@@ -1,6 +1,7 @@
 package com.informed.trading.reference.transactionaldata;
 
 import com.informed.trading.exception.EmptyArgumentException;
+import com.informed.trading.exception.InvalidArgumentException;
 import com.informed.trading.exception.InvalidPostcodeException;
 import com.informed.trading.utils.Util;
 import com.informed.trading.utils.Validation;
@@ -12,9 +13,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "addresses")
 public class Address extends UniqueData {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int id;
     @NotNull
     private String line1;
     private String line2;
@@ -30,11 +28,11 @@ public class Address extends UniqueData {
 
     public Address(String line1, String line2, String line3, String city, String county, String postcode) {
         super();
-        this.line1 = checkValidAddressLine1(line1, "Address Line 1");
+        this.line1 = Validation.checkStringNotNullEmptyAndOnlyLettersNumbers(line1, "Address Line 1");
         this.line2 = checkOptionalAddressInput(line2, "Address Line 2");
         this.line3 = checkOptionalAddressInput(line3, "Address Line 3");
-        this.city = checkValidAddressInput(city, "City");
-        this.county = checkValidAddressInput(county, "County");
+        this.city = Validation.checkStringNotNullEmptyAndOnlyLetters(city, "City");
+        this.county = Validation.checkStringNotNullEmptyAndOnlyLetters(county, "County");
         this.postcode = checkValidPostcode(postcode);
     }
 
@@ -48,28 +46,8 @@ public class Address extends UniqueData {
         }
     }
 
-    private String checkValidAddressLine1(String line1, String fieldName) {
-        if(Validation.checkStringIsEmptyOrNull(line1, fieldName) &&
-                Validation.checkStringContainsOnlyLettersAndNumbers(line1, fieldName)) {
-            return line1;
-        } else {
-            return "";
-        }
-    }
-
-    private String checkValidAddressInput(String str, String fieldName) {
-        if(Validation.checkStringIsEmptyOrNull(str, fieldName) &&
-                Validation.checkStringContainsOnlyLetters(str, fieldName)) {
-            return str;
-        } else {
-            return "";
-        }
-    }
-
     private String checkValidPostcode(String postcode) {
-        if (postcode.isEmpty()) {
-            throw new EmptyArgumentException("Please provide information for: Postcode");
-        }
+        Validation.checkStringIsNullOrEmpty(postcode, "Postcode");
         if(postcode.matches("([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})")) {
             return postcode;
         } else {

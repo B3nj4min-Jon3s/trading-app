@@ -14,9 +14,6 @@ import java.util.Date;
 @Table(name = "equity_trades")
 public class EquityTrade extends UniqueData {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int id;
     @ManyToOne
     @JoinColumn(name = "counter_party_1_ID")
     private CounterParty counterParty1;

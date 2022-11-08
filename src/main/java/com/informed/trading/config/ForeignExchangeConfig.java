@@ -19,14 +19,7 @@ public class ForeignExchangeConfig {
         System.out.println(key);
     }
 
-    public ForeignExchangeConfig() {
-        super();
-        System.out.println("In foreign exchange config");
-    }
-
-
     public String getAPIKey() {
-        System.out.println(EXCHANGE_API_KEY);
         return this.EXCHANGE_API_KEY;
     }
 

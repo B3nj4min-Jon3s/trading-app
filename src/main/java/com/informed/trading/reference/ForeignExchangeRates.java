@@ -5,7 +5,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.informed.trading.config.ForeignExchangeConfig;
 import com.informed.trading.interfaces.ForeignExchange;
+import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.reference.transactionaldata.UniqueData;
+import com.informed.trading.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 @Component
 public class ForeignExchangeRates implements ForeignExchange {
@@ -74,5 +79,13 @@ public class ForeignExchangeRates implements ForeignExchange {
         } else {
             return getGbpExchangeRate(currency2)/getGbpExchangeRate(currency1);
         }
+    }
+
+    public Set<String> getAllSymbolsAsSet() {
+        return gbpExchangeRates.asMap().keySet();
+    }
+    
+    public void testAddAllCurrenciesToDb(Set<String> symbols) {
+        symbols.forEach(s -> new Currency(Util.getSymbolName(s), s));
     }
 }

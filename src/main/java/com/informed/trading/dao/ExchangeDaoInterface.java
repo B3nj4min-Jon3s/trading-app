@@ -7,5 +7,5 @@ import java.util.List;
 public interface ExchangeDaoInterface {
     void addExchange(Exchange exchange);
     List<Exchange> getAllExchanges();
-    void deleteExchanges(int id);
+    void deleteExchanges(Exchange exchange);
 }

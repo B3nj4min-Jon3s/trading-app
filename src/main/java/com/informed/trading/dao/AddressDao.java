@@ -3,11 +3,14 @@ package com.informed.trading.dao;
 import com.informed.trading.reference.transactionaldata.Address;
 import com.informed.trading.repo.AddressRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+@Component
 public class AddressDao implements AddressDaoInterface {
 
     @Autowired
@@ -25,8 +28,19 @@ public class AddressDao implements AddressDaoInterface {
         return addresses;
     }
 
+    public Optional<Address> getAddressById(int id) {
+        return this.addressRepo.findById(id);
+    }
+
+
     @Transactional
-    public void deleteAddress(int id) {
-        this.addressRepo.deleteById(id);
+    public boolean deleteAddressById(int id) {
+        if (this.addressRepo.existsById(id)) {
+            this.addressRepo.deleteById(id);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

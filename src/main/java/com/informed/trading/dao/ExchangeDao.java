@@ -3,10 +3,12 @@ package com.informed.trading.dao;
 import com.informed.trading.reference.tradedata.Exchange;
 import com.informed.trading.repo.ExchangeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ExchangeDao implements ExchangeDaoInterface {
 
     @Autowired
@@ -23,7 +25,7 @@ public class ExchangeDao implements ExchangeDaoInterface {
         return exchanges;
     }
 
-    public void deleteExchanges(int id) {
-        this.exchangeRepo.deleteById(id);
+    public void deleteExchanges(Exchange exchange) {
+        this.exchangeRepo.delete(exchange);
     }
 }

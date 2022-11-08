@@ -7,5 +7,5 @@ import java.util.List;
 public interface CounterPartyDaoInterface {
     void addCounterParties(CounterParty counterParties);
     List<CounterParty> getAllCounterParties();
-    void deleteCounterParties(int id);
+    void deleteCounterParty(CounterParty counterParty);
 }

@@ -1,10 +1,9 @@
-package com.informed.trading.server;
+package com.informed.trading.service;
 
 import com.informed.trading.reference.transactionaldata.UniqueData;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface ServiceInterface {
 

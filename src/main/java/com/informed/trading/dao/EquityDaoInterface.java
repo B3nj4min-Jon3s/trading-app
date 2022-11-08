@@ -8,5 +8,5 @@ public interface EquityDaoInterface {
 
     void addEquity(Equity equity);
     List<Equity> getAllEquities();
-    void deleteEquity(int id);
+    void deleteEquity(Equity equity);
 }

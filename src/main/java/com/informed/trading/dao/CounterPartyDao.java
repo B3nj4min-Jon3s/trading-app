@@ -4,10 +4,11 @@ import com.informed.trading.reference.transactionaldata.Address;
 import com.informed.trading.reference.transactionaldata.CounterParty;
 import com.informed.trading.repo.CounterPartyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class CounterPartyDao implements CounterPartyDaoInterface{
 
     @Autowired
@@ -24,7 +25,7 @@ public class CounterPartyDao implements CounterPartyDaoInterface{
         return counterParties;
     }
 
-    public void deleteCounterParties(int id) {
-        this.counterPartyRepo.deleteById(id);
+    public void deleteCounterParty(CounterParty counterParty) {
+        this.counterPartyRepo.delete(counterParty);
     }
 }

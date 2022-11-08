@@ -7,5 +7,5 @@ import java.util.List;
 public interface EquityTradeDaoInterface {
     void addEquityTrade(EquityTrade equityTrade);
     List<EquityTrade> getAllEquityTrades();
-    void deleteEquityTrade(int id);
+    void deleteEquityTrade(EquityTrade equityTrade);
 }

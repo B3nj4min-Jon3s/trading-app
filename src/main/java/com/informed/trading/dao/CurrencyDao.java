@@ -3,10 +3,12 @@ package com.informed.trading.dao;
 import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.repo.CurrencyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CurrencyDao implements CurrencyDaoInterface{
 
     @Autowired
@@ -24,7 +26,7 @@ public class CurrencyDao implements CurrencyDaoInterface{
     }
 
 
-    public void deleteCurrency(int id) {
-        this.currencyRepo.deleteById(id);
+    public void deleteCurrency(Currency currency) {
+        this.currencyRepo.delete(currency);
     }
 }

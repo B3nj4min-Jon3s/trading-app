@@ -32,7 +32,7 @@ public class ForeignExchangeRates implements ForeignExchange {
         this.fec = fec;
 
         URL_STR = "https://v6.exchangerate-api.com/v6/"+EXCHANGE_API_KEY+"/latest/";
-         setup();
+        setup();
     }
 
     private void setup() {

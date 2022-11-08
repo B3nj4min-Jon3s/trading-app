@@ -4,10 +4,12 @@ import com.informed.trading.reference.tradedata.Equity;
 import com.informed.trading.reference.transactionaldata.EquityTrade;
 import com.informed.trading.repo.EquityTradeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class EquityTradeDao implements EquityTradeDaoInterface{
 
     @Autowired
@@ -24,7 +26,7 @@ public class EquityTradeDao implements EquityTradeDaoInterface{
         return equityTrades;
     }
 
-    public void deleteEquityTrade(int id) {
-        this.equityTradeRepo.deleteById(id);
+    public void deleteEquityTrade(EquityTrade equityTrade) {
+        this.equityTradeRepo.delete(equityTrade);
     }
 }

@@ -1,10 +1,9 @@
-package com.informed.trading.server;
+package com.informed.trading.service;
 
 import com.informed.trading.exception.DataAlreadyExistsException;
 import com.informed.trading.exception.ItemNotFoundException;
 import com.informed.trading.reference.transactionaldata.UniqueData;
 
-import javax.persistence.Id;
 import java.util.*;
 
 public class Service implements ServiceInterface {

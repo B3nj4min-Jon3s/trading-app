@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CounterPartyService {
@@ -20,8 +21,10 @@ public class CounterPartyService {
     public List<CounterParty> getAllCounterParties() {return dao.getAllCounterParties();
     }
 
+    public Optional<CounterParty> getCounterPartyById(int id) {return dao.getCounterPartyById(id);}
+
     public void addCounterParties (CounterParty counterParty) {dao.addCounterParties(counterParty);
     }
 
-    public void deleteCounterParty (CounterParty counterParty) {dao.deleteCounterParty(counterParty);}
+    public boolean deleteCounterPartyById (int id) {return dao.deleteCounterPartyById(id);}
 }

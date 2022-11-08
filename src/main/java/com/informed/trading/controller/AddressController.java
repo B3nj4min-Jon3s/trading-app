@@ -67,12 +67,11 @@ public class AddressController {
         }
     }
 
-
     @ExceptionHandler(ItemNotFoundException.class)
     @ResponseStatus(
             value = HttpStatus.NOT_FOUND,
             reason = "Invalid Request")
-    public void bookRequestFailure() {
+    public void itemNotFoundFailure() {
         System.out.println("Handling error");
     }
 

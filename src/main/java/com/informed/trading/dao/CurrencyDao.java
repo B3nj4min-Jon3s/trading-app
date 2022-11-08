@@ -24,9 +24,16 @@ public class CurrencyDao implements CurrencyDaoInterface{
         searchResults.forEach(currencies::add);
         return currencies;
     }
-
-
     public void deleteCurrency(Currency currency) {
         this.currencyRepo.delete(currency);
+    }
+
+    public boolean deleteCurrencyById(int id) {
+        if(this.currencyRepo.existsById(id)){
+            this.currencyRepo.deleteById(id);
+            return true;
+        }else {
+            return false;
+        }
     }
 }

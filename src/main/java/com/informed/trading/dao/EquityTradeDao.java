@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class EquityTradeDao implements EquityTradeDaoInterface{
@@ -26,7 +27,16 @@ public class EquityTradeDao implements EquityTradeDaoInterface{
         return equityTrades;
     }
 
-    public void deleteEquityTrade(EquityTrade equityTrade) {
-        this.equityTradeRepo.delete(equityTrade);
+    public Optional<EquityTrade> getEquityTradeById(int id) {
+        return this.equityTradeRepo.findById(id);
+    }
+
+    public boolean deleteEquityTradeById(int id) {
+        if(this.equityTradeRepo.existsById(id)){
+            this.equityTradeRepo.deleteById(id);
+            return true;
+        }else {
+            return false;
+        }
     }
 }

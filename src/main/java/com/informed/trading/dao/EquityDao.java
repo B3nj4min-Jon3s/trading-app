@@ -28,4 +28,13 @@ public class EquityDao implements EquityDaoInterface{
     public void deleteEquity(Equity equity) {
         this.equityRepo.delete(equity);
     }
+
+    public boolean deleteEquityById(int id) {
+        if(this.equityRepo.existsById(id)){
+            this.equityRepo.deleteById(id);
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

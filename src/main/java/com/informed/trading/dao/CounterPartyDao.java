@@ -6,14 +6,18 @@ import com.informed.trading.repo.CounterPartyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Component
-public class CounterPartyDao implements CounterPartyDaoInterface{
+public class CounterPartyDao implements CounterPartyDaoInterface {
 
     @Autowired
     private CounterPartyRepo counterPartyRepo;
 
+    @Transactional
     public void addCounterParties(CounterParty counterParties) {
         this.counterPartyRepo.save(counterParties);
     }
@@ -25,7 +29,17 @@ public class CounterPartyDao implements CounterPartyDaoInterface{
         return counterParties;
     }
 
-    public void deleteCounterParty(CounterParty counterParty) {
-        this.counterPartyRepo.delete(counterParty);
+    public Optional<CounterParty> getCounterPartyById(int id) {
+        return this.counterPartyRepo.findById(id);
+    }
+
+    @Transactional
+    public boolean deleteCounterPartyById(int id) {
+        if (this.counterPartyRepo.existsById(id)) {
+            this.counterPartyRepo.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

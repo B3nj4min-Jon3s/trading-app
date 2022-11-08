@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class EquityTradeService {
@@ -23,5 +24,12 @@ public class EquityTradeService {
     public void addEquityTrade(EquityTrade equityTrade) {dao.addEquityTrade(equityTrade);
     }
 
-    public void deleteEquityTrade (EquityTrade equityTrade) {dao.deleteEquityTrade(equityTrade);}
+    public boolean deleteEquityTradeById(int id) {
+        return dao.deleteEquityTradeById(id);
+    }
+
+    public Optional<EquityTrade> getEquityTradeById(int id) {
+        return dao.getEquityTradeById(id);
+    }
+
 }

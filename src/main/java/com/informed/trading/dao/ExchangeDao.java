@@ -28,4 +28,13 @@ public class ExchangeDao implements ExchangeDaoInterface {
     public void deleteExchanges(Exchange exchange) {
         this.exchangeRepo.delete(exchange);
     }
+
+    public boolean deleteExchangeById(int id) {
+        if(this.exchangeRepo.existsById(id)){
+            this.exchangeRepo.deleteById(id);
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

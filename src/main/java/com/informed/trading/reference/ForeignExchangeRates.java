@@ -1,24 +1,17 @@
 package com.informed.trading.reference;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.informed.trading.config.ForeignExchangeConfig;
-import com.informed.trading.interfaces.ForeignExchange;
 import com.informed.trading.reference.tradedata.Currency;
-import com.informed.trading.reference.transactionaldata.UniqueData;
 import com.informed.trading.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 @Component

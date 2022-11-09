@@ -16,7 +16,6 @@ public class ForeignExchangeConfig {
     @Value("${api-key}")
     public void setEXCHANGE_API_KEY(String key) {
         this.EXCHANGE_API_KEY = key;
-        System.out.println(key);
     }
 
     public String getAPIKey() {

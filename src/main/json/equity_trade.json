@@ -1,0 +1,50 @@
+
+{
+  "counterParty1":{
+    "id": 9,
+    "name": "ben",
+    "phoneNumber": "01617641029",
+    "emailAddress": "jacey@hotmail.com",
+    "address": {
+      "id": 4,
+      "line1": "10 low street",
+      "line2": "oak",
+      "line3": "line",
+      "city": "Manchester",
+      "county": "merseyside",
+      "postcode": "ch44 3ds"
+    }
+  },
+  "counterParty2":{
+    "id": 13,
+    "name": "ag",
+    "phoneNumber": "01617641029",
+    "emailAddress": "ag@hotmail.com",
+    "address": {
+      "id": 4,
+      "line1": "10 low street",
+      "line2": "oak",
+      "line3": "line",
+      "city": "Manchester",
+      "county": "merseyside",
+      "postcode": "ch44 3ds"
+    }
+  },
+  "equity":{
+    "id": 11,
+    "name": "google",
+    "symbol": "GOO"
+  },
+  "amount": 20,
+  "price": 10.0,
+  "currency": {
+    "id": 10,
+    "name": "coins",
+    "symbol": "COI"
+  },
+  "exchange":{
+    "id": 21,
+    "name": "island",
+    "symbol": "ISL"
+  }
+}

@@ -7,12 +7,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CurrencyDao implements CurrencyDaoInterface{
 
     @Autowired
     private CurrencyRepo currencyRepo;
+
+    public Optional<Currency> getCurrencyById(int id) {
+        return this.currencyRepo.findById(id);
+    }
 
     public void addCurrency(Currency currency) {
         this.currencyRepo.save(currency);

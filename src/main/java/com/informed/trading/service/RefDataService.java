@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class RefDataService {
@@ -37,6 +38,12 @@ public class RefDataService {
 
     public List<Currency> getAllCurrencies() {return currencyDao.getAllCurrencies();
     }
+
+    public Optional<Currency> getCurrencyById(int id) {
+        return currencyDao.getCurrencyById(id);
+    }
+
+
     public List<Exchange> getAllExchanges() {return exchangeDao.getAllExchanges();
     }
     public List<Equity> getAllEquities() {return equityDao.getAllEquities();

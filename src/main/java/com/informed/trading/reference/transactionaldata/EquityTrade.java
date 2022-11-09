@@ -78,10 +78,7 @@ public class EquityTrade extends UniqueData {
     public EquityTrade(CounterParty counterParty1, CounterParty counterParty2, Equity equity, int amount, double price, Currency currency, Exchange exchange) {
         super();
         this.exchange = (Exchange) Validation.checkObjectIsNotNullAndReturnObject(exchange, "exchange");
-        //date
-        Date date = new Date();
-        this.agreementDate = new java.sql.Date(date.getTime());
-        //
+        this.agreementDate = new Date();
         this.equity =  (Equity) Validation.checkObjectIsNotNullAndReturnObject(equity, "Equity");
         this.amount = Validation.checkIntIsGreaterThanZero(amount, "Amount");
         this.price = Validation.checkDoubleIsGreaterThanZero(price, "Price");

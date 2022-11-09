@@ -8,8 +8,10 @@ import com.informed.trading.reference.ForeignExchangeRates;
 import com.informed.trading.reference.tradedata.Exchange;
 import com.informed.trading.utils.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -21,21 +23,30 @@ public class EquityTrade extends UniqueData {
     ForeignExchangeRates fe;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "exchange_id")
     private Exchange exchange;
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "counter_party_1_ID")
     private CounterParty counterParty1;
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "counter_party_2_ID")
     private CounterParty counterParty2;
+    //@NotNull
+    @DateTimeFormat
     private Date agreementDate;
-    @OneToOne
+    @ManyToOne
+    @NotNull
     @JoinColumn(name = "equity_ID")
     private Equity equity;
+    @NotNull
     private int amount;
+    @NotNull
     private double price;
-    @OneToOne
+    @ManyToOne
+    @NotNull
     @JoinColumn(name = "currency_ID")
     private Currency currency;
 
@@ -47,7 +58,6 @@ public class EquityTrade extends UniqueData {
         this.exchange = exchange;
     }
 
-    public EquityTrade() {}
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
@@ -65,16 +75,17 @@ public class EquityTrade extends UniqueData {
         this.counterParty1 = counterParty1;
     }
 
-    public EquityTrade(CounterParty counterParty1, CounterParty counterParty2, Date agreementDate, Equity equity, int amount, double price, Currency currency, Exchange exchange) {
+    public EquityTrade(CounterParty counterParty1, CounterParty counterParty2, Equity equity, int amount, double price, Currency currency, Exchange exchange) {
         super();
         this.exchange = (Exchange) Validation.checkObjectIsNotNullAndReturnObject(exchange, "exchange");
-        this.agreementDate = (Date) Validation.checkObjectIsNotNullAndReturnObject(agreementDate, "Agreement Date");
+        this.agreementDate = new Date();
         this.equity =  (Equity) Validation.checkObjectIsNotNullAndReturnObject(equity, "Equity");
         this.amount = Validation.checkIntIsGreaterThanZero(amount, "Amount");
         this.price = Validation.checkDoubleIsGreaterThanZero(price, "Price");
         this.currency = currency;
         setCounterParties(counterParty1, counterParty2);
     }
+    public EquityTrade() {}
 
     private void setCounterParties(CounterParty counterParty1, CounterParty counterParty2) {
         if (Validation.checkObjectIsNotNull(counterParty1, "Counter Party 1") ||

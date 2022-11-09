@@ -7,6 +7,7 @@ import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.reference.tradedata.Equity;
 import com.informed.trading.reference.ForeignExchangeRates;
 import com.informed.trading.reference.tradedata.Exchange;
+import com.informed.trading.utils.TraderAppContext;
 import com.informed.trading.utils.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,7 +25,6 @@ public class EquityTrade extends UniqueData {
     @Transient
     private ForeignExchangeRates fe;
 
-    @Autowired
     public void setForeignExchange(ForeignExchangeRates fe) {
         this.fe = fe;
     }
@@ -66,11 +66,10 @@ public class EquityTrade extends UniqueData {
         this.price = Validation.checkDoubleIsGreaterThanZero(price, "Price");
         this.currency = currency;
         setCounterParties(counterParty1, counterParty2);
+        this.setForeignExchange(TraderAppContext.getForeignExchangeRates());
     }
 
     public EquityTrade() {
-        super();
-        System.out.println("In Equity Trade Empty Constructor");
     }
 
     public Exchange getExchange() {

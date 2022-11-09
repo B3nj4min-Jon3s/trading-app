@@ -24,8 +24,6 @@ public class ForeignExchangeRates implements ForeignExchange {
     private static final String GBP_STR = "GBP";
     private JsonObject gbpExchangeRates;
 
-
-
     @Autowired
     public ForeignExchangeRates(ForeignExchangeConfig fec) {
         EXCHANGE_API_KEY = fec.getAPIKey();
@@ -33,7 +31,6 @@ public class ForeignExchangeRates implements ForeignExchange {
 
         URL_STR = "https://v6.exchangerate-api.com/v6/"+EXCHANGE_API_KEY+"/latest/";
         setup();
-        System.out.println("In foreign exchange rates");
     }
 
     private void setup() {

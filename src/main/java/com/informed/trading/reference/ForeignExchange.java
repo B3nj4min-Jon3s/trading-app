@@ -1,4 +1,4 @@
-package com.informed.trading.interfaces;
+package com.informed.trading.reference;
 
 public interface ForeignExchange {
 

@@ -7,8 +7,10 @@ import com.informed.trading.reference.tradedata.Exchange;
 import com.informed.trading.service.RefDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
-
+@Component
+@RestController
 @RequestMapping("admin")
 public class AdminController {
     private RefDataService refDataService;

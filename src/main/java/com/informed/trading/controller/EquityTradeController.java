@@ -2,6 +2,7 @@ package com.informed.trading.controller;
 
 
 import com.informed.trading.exception.ItemNotFoundException;
+import com.informed.trading.reference.ForeignExchangeRates;
 import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.reference.transactionaldata.Address;
 import com.informed.trading.reference.transactionaldata.EquityTrade;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Transient;
 import javax.ws.rs.Path;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,14 @@ public class EquityTradeController {
 
     private EquityTradeService equityTradeService;
     private RefDataService refDataService;
+
+
+    private ForeignExchangeRates fe;
+
+    @Autowired
+    public void setForeignExchange(ForeignExchangeRates fe) {
+        this.fe = fe;
+    }
 
     @Autowired
     public void setEquityTradeService(EquityTradeService equityTradeService) {
@@ -78,7 +88,7 @@ public class EquityTradeController {
         if (equityTrade.isPresent()) {
             Optional<Currency> currency = refDataService.getCurrencyById(currencyId);
             if (currency.isPresent()) {
-                return equityTrade.get().getValueInCurrency(currency.get());
+                return equityTrade.get().getValueInCurrency(currency.get(), fe);
             } else {
                 throw new ItemNotFoundException("Currency not found with id: " + currencyId);
             }

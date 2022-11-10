@@ -1,15 +1,12 @@
 package com.informed.trading.reference.transactionaldata;
 
-import com.informed.trading.dao.AddressDao;
 import com.informed.trading.exception.EmptyArgumentException;
 import com.informed.trading.exception.InvalidArgumentException;
 import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.reference.tradedata.Equity;
 import com.informed.trading.reference.ForeignExchangeRates;
 import com.informed.trading.reference.tradedata.Exchange;
-import com.informed.trading.utils.TraderAppContext;
 import com.informed.trading.utils.Validation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -21,13 +18,6 @@ import java.util.Date;
 @Table(name = "equity_trades")
 @Component
 public class EquityTrade extends UniqueData {
-
-    @Transient
-    private ForeignExchangeRates fe;
-
-    public void setForeignExchange(ForeignExchangeRates fe) {
-        this.fe = fe;
-    }
 
     @ManyToOne
     @NotNull
@@ -66,7 +56,6 @@ public class EquityTrade extends UniqueData {
         this.price = Validation.checkDoubleIsGreaterThanZero(price, "Price");
         this.currency = currency;
         setCounterParties(counterParty1, counterParty2);
-        this.setForeignExchange(TraderAppContext.getForeignExchangeRates());
     }
 
     public EquityTrade() {
@@ -115,7 +104,7 @@ public class EquityTrade extends UniqueData {
         return this.amount * this.price;
     }
 
-    public double getValueInCurrency(Currency currency) {
+    public double getValueInCurrency(Currency currency, ForeignExchangeRates fe) {
         double exchangeRate = fe.getExchangeRateFor(this.currency.getSymbol(), currency.getSymbol());
         return exchangeRate * getValueOfTrade();
     }

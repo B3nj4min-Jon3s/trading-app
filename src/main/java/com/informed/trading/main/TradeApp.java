@@ -23,5 +23,6 @@ public class TradeApp {
 
 
         System.out.println("http://localhost:8282/trader");
+        System.out.println("http://localhost:8282/");
     }
 }

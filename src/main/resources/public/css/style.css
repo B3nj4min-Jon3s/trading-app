@@ -14,20 +14,17 @@ h1 {
 }
 
 .section {
-    background-color: aqua;
     padding: 50px 150px;
+}
+
+.mb-25 { 
+    margin-bottom: 25px;
 }
 
 /* NAVBAR */
 
 .nav-padding {
-    padding: 20px 40px !important;
-    margin-left: 50px !important;
-}
-
-.nav-padding {
-    margin-left: 50px !important;
-    padding-left: 100px !important;
+    padding: 20px 150px !important;
 }
 
 .nav-display {
@@ -35,6 +32,19 @@ h1 {
     justify-content: space-between;
 }
 
+.nav-right {
+    justify-content: end;
+    font-size: 20px;
+}
+
+.nav-icon {
+    font-size: 50px;
+}
+
+.header-icon {
+    font-size: 75px;
+    margin-bottom: 25px;
+}
 
 /* HEADER */
 
@@ -45,7 +55,7 @@ h1 {
 }
 
 .header-text-box {
-    padding: 25px 50px;
+    padding: 50px 50px;
     background-color: rgba(255, 255, 255, 0.178);
     color: #fff;
     border-radius: 10px;
@@ -59,3 +69,4 @@ h1 {
 .header-text-box button {
     font-size: 35px !important;
 }
+

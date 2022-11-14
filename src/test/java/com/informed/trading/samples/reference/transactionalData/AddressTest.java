@@ -1,8 +1,9 @@
-package com.informed.trading.reference.transactionaldata;
+package com.informed.trading.samples.reference.transactionalData;
 
 import com.informed.trading.exception.EmptyArgumentException;
 import com.informed.trading.exception.InvalidArgumentException;
 import com.informed.trading.exception.InvalidPostcodeException;
+import com.informed.trading.reference.transactionalData.Address;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;

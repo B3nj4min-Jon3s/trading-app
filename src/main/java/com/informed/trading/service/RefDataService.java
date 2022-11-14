@@ -2,12 +2,10 @@ package com.informed.trading.service;
 
 import com.informed.trading.dao.CurrencyDao;
 import com.informed.trading.dao.EquityDao;
-import com.informed.trading.dao.EquityTradeDao;
 import com.informed.trading.dao.ExchangeDao;
 import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.reference.tradedata.Equity;
 import com.informed.trading.reference.tradedata.Exchange;
-import com.informed.trading.reference.transactionaldata.EquityTrade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

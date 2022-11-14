@@ -1,4 +1,4 @@
-package com.informed.trading.reference.transactionaldata;
+package com.informed.trading.reference.transactionalData;
 
 import com.informed.trading.exception.EmptyArgumentException;
 import com.informed.trading.exception.InvalidArgumentException;

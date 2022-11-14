@@ -1,8 +1,9 @@
-package com.informed.trading.reference.transactionaldata;
+package com.informed.trading.samples.reference.transactionalData;
 
 import com.informed.trading.exception.EmptyArgumentException;
 import com.informed.trading.exception.InvalidArgumentException;
-import org.junit.jupiter.api.BeforeEach;
+import com.informed.trading.reference.transactionalData.Address;
+import com.informed.trading.reference.transactionalData.CounterParty;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

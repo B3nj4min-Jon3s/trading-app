@@ -2,7 +2,7 @@ package com.informed.trading.controller;
 
 
 import com.informed.trading.exception.ItemNotFoundException;
-import com.informed.trading.reference.transactionaldata.Address;
+import com.informed.trading.reference.transactionalData.Address;
 import com.informed.trading.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

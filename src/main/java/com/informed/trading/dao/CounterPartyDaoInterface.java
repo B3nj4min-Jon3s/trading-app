@@ -1,6 +1,6 @@
 package com.informed.trading.dao;
 
-import com.informed.trading.reference.transactionaldata.CounterParty;
+import com.informed.trading.reference.transactionalData.CounterParty;
 
 import java.util.List;
 import java.util.Optional;

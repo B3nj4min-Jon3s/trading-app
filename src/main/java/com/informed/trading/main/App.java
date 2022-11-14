@@ -1,7 +1,6 @@
 package com.informed.trading.main;
 
-import com.informed.trading.reference.ForeignExchangeRates;
-import com.informed.trading.reference.transactionaldata.Address;
+import com.informed.trading.reference.transactionalData.Address;
 
 import java.util.UUID;
 

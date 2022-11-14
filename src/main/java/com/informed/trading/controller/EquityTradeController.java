@@ -4,9 +4,7 @@ package com.informed.trading.controller;
 import com.informed.trading.exception.ItemNotFoundException;
 import com.informed.trading.reference.ForeignExchangeRates;
 import com.informed.trading.reference.tradedata.Currency;
-import com.informed.trading.reference.transactionaldata.Address;
-import com.informed.trading.reference.transactionaldata.EquityTrade;
-import com.informed.trading.service.AddressService;
+import com.informed.trading.reference.transactionalData.EquityTrade;
 import com.informed.trading.service.EquityTradeService;
 import com.informed.trading.service.RefDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Transient;
-import javax.ws.rs.Path;
 import java.util.List;
 import java.util.Optional;
 

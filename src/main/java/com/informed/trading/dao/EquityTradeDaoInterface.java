@@ -1,6 +1,6 @@
 package com.informed.trading.dao;
 
-import com.informed.trading.reference.transactionaldata.EquityTrade;
+import com.informed.trading.reference.transactionalData.EquityTrade;
 
 import java.util.List;
 import java.util.Optional;

@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <title>Team Trader</title>
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <script src="./js/bookshop.js"></script>
+    <script src="./js/trader.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="https://kit.fontawesome.com/913bafd615.js" crossorigin="anonymous"></script>
 </head>
 
-<body> 
+<body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-display nav-padding justify-between">
-        <a class="navbar-brand" href="#"><i class="fa-solid fa-comments-dollar nav-icon"></i></a>
+        <a class="navbar-brand" href="./index.html"><i class="fa-solid fa-comments-dollar nav-icon"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,29 +20,33 @@
         <div class="collapse navbar-collapse nav-padding nav-right" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="./currency-service.html">Currencies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="./equity-service.html">Equities</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="./exchange-service.html">Exchanges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./counter-party/counter-party-service.html">Counter Party</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./equity-trade/equity-trade-service.html">Equity Trade</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./address/address-service.html">Address</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./admin/admin-portal.html">Admin</a>
                 </li>
             </ul>
         </div>
     </nav>
-
+  
     <section>
         <div class="d-flex justify-content-center align-items-center header-img">
             <div class="header-text-box">
@@ -55,7 +59,101 @@
     </section>
     <section class="section">
         <div class="title-1">
-            <h2>Become the very best</h2>
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-container">
+            <div class="card" style="width: 18rem;">
+                <img src="./img/address.jpg" class="card-img-top" alt="Address">
+                <div class="card-body">
+                    <h5 class="card-title">Address Service</h5>
+                    <p class="card-text">Use our address service to: </p>
+                    <ul>
+                        <li>View all addresses</li>
+                        <li>Add an address</li>
+                        <li>Update an address</li>
+                        <li>Remove an address</li>
+                    </ul>
+                    <a href="./address/address-service.html" class="btn btn-primary">Address Service</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="./img/counter-party.jpg" class="card-img-top" alt="Counter Party">
+                <div class="card-body">
+                    <h5 class="card-title">Counter Party Service</h5>
+                    <p class="card-text">Use our counter party service to: </p>
+                    <ul>
+                        <li>View all counter parties</li>
+                        <li>Add a counter party</li>
+                        <li>Update a counter party</li>
+                        <li>Remove a counter party</li>
+                    </ul>
+                    <a href="./counter-party/counter-party-service.html" class="btn btn-primary">Counter Party
+                        Service</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="./img/trade.jpg" class="card-img-top" alt="Address">
+                <div class="card-body">
+                    <h5 class="card-title">Equity Trade Service</h5>
+                    <p class="card-text">Use our equity trade service to: </p>
+                    <ul>
+                        <li>View all equity trades</li>
+                        <li>Add an equity trade</li>
+                        <li>Update an equity trade</li>
+                        <li>Remove an equity trade</li>
+                    </ul>
+                    <a href="./equity-trade/equity-trade-service.html" class="btn btn-primary">Equity Trade Service</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="./img/currency.jpg" class="card-img-top" alt="Address">
+                <div class="card-body">
+                    <h5 class="card-title">Currency Service</h5>
+                    <p class="card-text">Use our currency service to: </p>
+                    <ul>
+                        <li>View all currencies</li>
+                    </ul>
+                    <a href="./currency-service.html" class="btn btn-primary">Currency Service</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="./img/equity.jpg" class="card-img-top" alt="Address">
+                <div class="card-body">
+                    <h5 class="card-title">Equity Service</h5>
+                    <p class="card-text">Use our equity service to: </p>
+                    <ul>
+                        <li>View all equities</li>
+                    </ul>
+                    <a href="./equity-service.html" class="btn btn-primary">Equity Service</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="./img/exchange.jpg" class="card-img-top" alt="Address">
+                <div class="card-body">
+                    <h5 class="card-title">Exchange Service</h5>
+                    <p class="card-text">Use our exchange service to: </p>
+                    <ul>
+                        <li>View all exchanges</li>
+                    </ul>
+                    <a href="./exchange-service.html" class="btn btn-primary">Exchange Service</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="./img/admin.jpg" class="card-img-top" alt="Address">
+                <div class="card-body">
+                    <h5 class="card-title">Admin Portal</h5>
+                    <p class="card-text">Use our admin portal to: </p>
+                    <ul>
+                        <li>Add a currency</li>
+                        <li>Remove a currency</li>
+                        <li>Add an exchange</li>
+                        <li>Remove an exchange</li>
+                        <li>Add an equity</li>
+                        <li>Remove an equity</li>
+                    </ul>
+                    <a href="./admin/admin-portal.html" class="btn btn-primary">Admin Portal</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -64,14 +162,16 @@
             <h4>Useful Pages</h4>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
+        integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-    crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
-    integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
 
 </html>

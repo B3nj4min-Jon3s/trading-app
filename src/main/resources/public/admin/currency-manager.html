@@ -46,20 +46,92 @@
             </ul>
         </div>
     </nav>
-  
+
     <section>
         <div class="standard-header">
-            <h1>Currencies</h1>
+            <h1>Currency Manager</h1>
         </div>
     </section>
     <section class="section">
         <div class="title-1">
             <h2>View All Currencies</h2>
         </div>
+        <!-- <div class="add-button">
+            <button type="button" id="add-currency" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#currencyModal"><i class="fa-solid fa-plus"></i> Add
+                Currency</button>
+        </div> -->
+
+        <!-- <form id="currency-form" action="">
+            <div class="form-group mb-25">
+                <label for="currencyName">Currency Name</label>
+                <input type="text" class="form-control" id="currencyName" aria-describedby="nameHelp"
+                    placeholder="Enter currency name">
+                <small id="nameHelp" class="form-text text-muted">Only standard text characters
+                    allowed.</small>
+            </div>
+            <div class="form-group mb-25">
+                <label for="currencySymbol">Currency Symbol</label>
+                <input type="text" class="form-control" id="currencySymbol"
+                    placeholder="Enter currency symbol">
+                <small id="symbolHelp" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                    standard text characters allowed.</small>
+            </div>
+            <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+        </form> -->
+
+        
+        <form id="currency-form" action="">
+            Name: <input type="text" name="currency-name" id="name"  /> <br />
+            Symbol: <input type="text" name="symbol " id="symbol" /> <br />
+            <p>
+                <button type="submit" name="add" value="add">add currency</button>
+            </p>
+        </form>
+
+
         <div id="data-container">
-            
+
         </div>
     </section>
+
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="currencyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Currency</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="currency-form">
+                        <div class="form-group mb-25">
+                            <label for="currencyName">Currency Name</label>
+                            <input type="text" class="form-control" id="currencyName" aria-describedby="nameHelp"
+                                placeholder="Enter currency name">
+                            <small id="nameHelp" class="form-text text-muted">Only standard text characters
+                                allowed.</small>
+                        </div>
+                        <div class="form-group mb-25">
+                            <label for="currencySymbol">Currency Symbol</label>
+                            <input type="text" class="form-control" id="currencySymbol"
+                                placeholder="Enter currency symbol">
+                            <small id="symbolHelp" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                                standard text characters allowed.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
         integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
@@ -69,7 +141,8 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
         integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
 </body>
 

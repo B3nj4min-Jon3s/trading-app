@@ -37,14 +37,14 @@ public class AdminController {
     }
 
     //EQUITIES
-    @PostMapping("/trader/equity")
+    @PostMapping("/equity")
     @ResponseStatus(HttpStatus.CREATED)
     public void addEquity(@RequestBody Equity equity) {
         System.out.println("EquityController.addEquity(" + equity + ")");
         refDataService.addEquity(equity);
     }
 
-    @DeleteMapping("trader/equity/{id}")
+    @DeleteMapping("/equity/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteEquityById(@PathVariable int id){
         if (!refDataService.deleteEquityById(id)){
@@ -53,14 +53,14 @@ public class AdminController {
     }
 
     //EXCHANGES
-    @PostMapping("/trader/exchange")
+    @PostMapping("/exchange")
     @ResponseStatus(HttpStatus.CREATED)
     public void addExchange(@RequestBody Exchange exchange) {
         System.out.println("ExchangeController.addExchange(" + exchange + ")");
         refDataService.addExchange(exchange);
     }
 
-    @DeleteMapping("trader/exchange/{id}")
+    @DeleteMapping("/exchange/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteExchangesById(@PathVariable int id){
         if (!refDataService.deleteExchangeById(id)){

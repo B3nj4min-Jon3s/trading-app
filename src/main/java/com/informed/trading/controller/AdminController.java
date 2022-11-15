@@ -28,9 +28,17 @@ public class AdminController {
         refDataService.addCurrency(currency);
     }
 
+    @PutMapping("/currency")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void updateCurrency(@RequestBody Currency currency) {
+        System.out.println("CurrencyController.updateCurrency(" + currency + ")");
+        refDataService.addCurrency(currency);
+    }
+
     @DeleteMapping("/currency/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteCurrencyById(@PathVariable int id){
+        System.out.println("ID = " + id);
         if (!refDataService.deleteCurrencyById(id)){
             throw new ItemNotFoundException("Currency not found with id: " + id);
         }
@@ -41,6 +49,13 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addEquity(@RequestBody Equity equity) {
         System.out.println("EquityController.addEquity(" + equity + ")");
+        refDataService.addEquity(equity);
+    }
+
+    @PutMapping("/equity")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void updateEquity(@RequestBody Equity equity) {
+        System.out.println("EquityController.updateEquity(" + equity + ")");
         refDataService.addEquity(equity);
     }
 
@@ -57,6 +72,13 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addExchange(@RequestBody Exchange exchange) {
         System.out.println("ExchangeController.addExchange(" + exchange + ")");
+        refDataService.addExchange(exchange);
+    }
+
+    @PutMapping("/exchange")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void updateExchange(@RequestBody Exchange exchange) {
+        System.out.println("ExchangeController.updateExchange(" + exchange + ")");
         refDataService.addExchange(exchange);
     }
 

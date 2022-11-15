@@ -1,14 +1,14 @@
 $(function() {
-    displayCurrencies();
+    displayEquities();
 });
 
-function displayCurrencies() {
-    $.get("http://localhost:8282/trader/currencies", function (currencies) {
+function displayEquities() {
+    $.get("http://localhost:8282/trader/equities", function (equities) {
         $("#data-container").empty();
         let html = "<div class='editable-data'>";
-        $.each(currencies, function (i, currency) {
+        $.each(equities, function (i, equity) {
             html += "<div class='data-card'>";
-            html += "<h3>" + currency.name + " | " + currency.symbol + "</h3>";
+            html += "<h3>" + equity.name + " | " + equity.symbol + "</h3>";
             html += "</div>";
         });
         html += "</div>";

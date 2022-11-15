@@ -1,14 +1,14 @@
 $(function() {
-    displayCurrencies();
+    displayExchanges();
 });
 
-function displayCurrencies() {
-    $.get("http://localhost:8282/trader/currencies", function (currencies) {
+function displayExchanges() {
+    $.get("http://localhost:8282/trader/exchanges", function (exchanges) {
         $("#data-container").empty();
         let html = "<div class='editable-data'>";
-        $.each(currencies, function (i, currency) {
+        $.each(exchanges, function (i, exchange) {
             html += "<div class='data-card'>";
-            html += "<h3>" + currency.name + " | " + currency.symbol + "</h3>";
+            html += "<h3>" + exchange.name + " | " + exchange.symbol + "</h3>";
             html += "</div>";
         });
         html += "</div>";

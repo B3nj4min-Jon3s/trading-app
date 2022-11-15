@@ -94,24 +94,25 @@ h2 {
 /* DATA */
 
 #data-container {
+}
+
+.editable-data {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     gap: 50px;
+    text-align: center;
 }
 
 .hidden {
     display: none;
 }
 
-.editable-data {
-    text-align: center;
-}
-
 .hover-edit {
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.37);
     align-items: center;
     justify-content: space-evenly;
     transition: 0.2s;
@@ -121,6 +122,16 @@ h2 {
     left: 0;
 }
 
-/* .editable-data:hover .hover-edit {
+.edit-icon {
+    font-size: 20px;
+}
+
+.data-card {
+    padding: 20px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 5px;
+}
+
+/* .data-wrapper:hover .hover-edit {
     display:flex;
 } */

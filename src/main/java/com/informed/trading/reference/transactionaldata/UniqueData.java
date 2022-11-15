@@ -10,6 +10,12 @@ public abstract class UniqueData {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
+    public UniqueData() {}
+
+    public UniqueData(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

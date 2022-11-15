@@ -6,6 +6,7 @@
     <title>Team Trader | Currency Manager</title>
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script src="../js/currency-manager.js"></script>
+    <script src="../js/jquery.serializejson.js"></script>
     <link rel="stylesheet" href="../css/style.css" />
     <script src="https://kit.fontawesome.com/913bafd615.js" crossorigin="anonymous"></script>
 </head>
@@ -52,56 +53,56 @@
             <h1>Currency Manager</h1>
         </div>
     </section>
+
+    <section class="section">
+        <form id="currency-form-update">
+            <div class="form-group">
+                <input type="number" class="form-control" name="id" id="id-update" readonly>
+            </div>
+            <div class="form-group mb-25">
+                <label for="currencyName-update">Currency Name</label>
+                <input type="text" class="form-control" id="currencyName-update" aria-describedby="nameHelp"
+                    placeholder="Enter currency name" name="name">
+                <small id="nameHelp-update" class="form-text text-muted">Only standard text characters
+                    allowed.</small>
+            </div>
+            <div class="form-group mb-25">
+                <label for="currencySymbol-update">Currency Symbol</label>
+                <input type="text" class="form-control" id="currencySymbol-update"
+                    placeholder="Enter currency symbol" name="symbol">
+                <small id="symbolHelp-update" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                    standard text characters allowed.</small>
+            </div>
+            <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+        </form>
+    </section>
+
     <section class="section">
         <div class="title-1">
             <h2>View All Currencies</h2>
         </div>
-        <!-- <div class="add-button">
+        <div class="add-button mb-25">
             <button type="button" id="add-currency" class="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#currencyModal"><i class="fa-solid fa-plus"></i> Add
                 Currency</button>
-        </div> -->
+        </div>
 
-        <!-- <form id="currency-form" action="">
-            <div class="form-group mb-25">
-                <label for="currencyName">Currency Name</label>
-                <input type="text" class="form-control" id="currencyName" aria-describedby="nameHelp"
-                    placeholder="Enter currency name">
-                <small id="nameHelp" class="form-text text-muted">Only standard text characters
-                    allowed.</small>
-            </div>
-            <div class="form-group mb-25">
-                <label for="currencySymbol">Currency Symbol</label>
-                <input type="text" class="form-control" id="currencySymbol"
-                    placeholder="Enter currency symbol">
-                <small id="symbolHelp" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
-                    standard text characters allowed.</small>
-            </div>
-            <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
-        </form> -->
-
-        
-        <form id="currency-form" action="">
-            Name: <input type="text" name="currency-name" id="name"  /> <br />
-            Symbol: <input type="text" name="symbol " id="symbol" /> <br />
-            <p>
-                <button type="submit" name="add" value="add">add currency</button>
-            </p>
-        </form>
 
 
         <div id="data-container">
 
         </div>
+
+
     </section>
 
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="currencyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <!-- Add New Modal -->
+    <div class="modal fade" id="currencyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Currency</h5>
+                    <h5 class="modal-title">Add Currency</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -111,15 +112,55 @@
                         <div class="form-group mb-25">
                             <label for="currencyName">Currency Name</label>
                             <input type="text" class="form-control" id="currencyName" aria-describedby="nameHelp"
-                                placeholder="Enter currency name">
+                                placeholder="Enter currency name" name="name">
                             <small id="nameHelp" class="form-text text-muted">Only standard text characters
                                 allowed.</small>
                         </div>
                         <div class="form-group mb-25">
                             <label for="currencySymbol">Currency Symbol</label>
                             <input type="text" class="form-control" id="currencySymbol"
-                                placeholder="Enter currency symbol">
+                                placeholder="Enter currency symbol" name="symbol">
                             <small id="symbolHelp" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                                standard text characters allowed.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Modal -->
+    <!-- <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Currency</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="currency-form-update">
+                        <div class="form-group">
+                            <input type="number" name="id" id="id-update" class="hidden" readonly>
+                        </div>
+                        <div class="form-group mb-25">
+                            <label for="currencyName-update">Currency Name</label>
+                            <input type="text" class="form-control" id="currencyName-update" aria-describedby="nameHelp"
+                                placeholder="Enter currency name" name="name">
+                            <small id="nameHelp-update" class="form-text text-muted">Only standard text characters
+                                allowed.</small>
+                        </div>
+                        <div class="form-group mb-25">
+                            <label for="currencySymbol-update">Currency Symbol</label>
+                            <input type="text" class="form-control" id="currencySymbol-update"
+                                placeholder="Enter currency symbol" name="symbol">
+                            <small id="symbolHelp-update" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
                                 standard text characters allowed.</small>
                         </div>
                         <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Team Trader | Currency Manager</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="../js/currency-manager.js"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://kit.fontawesome.com/913bafd615.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-display nav-padding justify-between">
+        <a class="navbar-brand" href="./index.html"><i class="fa-solid fa-comments-dollar nav-icon"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse nav-padding nav-right" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../currency-service.html">Currencies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../equity-service.html">Equities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../exchange-service.html">Exchanges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../counter-party/counter-party-service.html">Counter Party</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../equity-trade/equity-trade-service.html">Equity Trade</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../address/address-service.html">Address</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./admin-portal.html">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="standard-header">
+            <h1>Currency Manager</h1>
+        </div>
+    </section>
+    <section class="section">
+        <div class="title-1">
+            <h2>View All Currencies</h2>
+        </div>
+        <div class="add-button">
+            <button type="button" id="add-currency" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#currencyModal"><i class="fa-solid fa-plus"></i> Add
+                Currency</button>
+        </div>
+
+        <!-- <form id="currency-form" action="">
+            <div class="form-group mb-25">
+                <label for="currencyName">Currency Name</label>
+                <input type="text" class="form-control" id="currencyName" aria-describedby="nameHelp"
+                    placeholder="Enter currency name">
+                <small id="nameHelp" class="form-text text-muted">Only standard text characters
+                    allowed.</small>
+            </div>
+            <div class="form-group mb-25">
+                <label for="currencySymbol">Currency Symbol</label>
+                <input type="text" class="form-control" id="currencySymbol"
+                    placeholder="Enter currency symbol">
+                <small id="symbolHelp" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                    standard text characters allowed.</small>
+            </div>
+            <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+        </form> -->
+
+        
+        <form id="currency-form" action="">
+            Name: <input type="text" name="name" id="name"  /> <br />
+            Symbol: <input type="text" name="symbol " id="symbol" /> <br />
+            <p>
+                <button type="submit" name="add" value="add">add currency</button>
+            </p>
+        </form>
+
+        <div id="data-container">
+
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="currencyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Currency</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="currency-form">
+                        <div class="form-group mb-25">
+                            <label for="currencyName">Currency Name</label>
+                            <input type="text" class="form-control" id="currencyName" aria-describedby="nameHelp"
+                                placeholder="Enter currency name">
+                            <small id="nameHelp" class="form-text text-muted">Only standard text characters
+                                allowed.</small>
+                        </div>
+                        <div class="form-group mb-25">
+                            <label for="currencySymbol">Currency Symbol</label>
+                            <input type="text" class="form-control" id="currencySymbol"
+                                placeholder="Enter currency symbol">
+                            <small id="symbolHelp" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                                standard text characters allowed.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</body>
+
+</html>

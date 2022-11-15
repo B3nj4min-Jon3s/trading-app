@@ -5,6 +5,7 @@ import com.informed.trading.repo.CurrencyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,10 @@ public class CurrencyDao implements CurrencyDaoInterface{
         return this.currencyRepo.findById(id);
     }
 
+    @Transactional
     public void addCurrency(Currency currency) {
+        System.out.println("###########################");
+        System.out.println(currency);
         this.currencyRepo.save(currency);
     }
 
@@ -29,10 +33,11 @@ public class CurrencyDao implements CurrencyDaoInterface{
         searchResults.forEach(currencies::add);
         return currencies;
     }
+    @Transactional
     public void deleteCurrency(Currency currency) {
         this.currencyRepo.delete(currency);
     }
-
+    @Transactional
     public boolean deleteCurrencyById(int id) {
         if(this.currencyRepo.existsById(id)){
             this.currencyRepo.deleteById(id);

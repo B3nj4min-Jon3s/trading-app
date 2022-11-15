@@ -27,6 +27,9 @@ public abstract class TradeDataEntity extends UniqueData {
         super();
         this.name = Validation.checkStringNotNullEmptyAndOnlyLetters(name, "Name");
         setSymbol(symbol);
+    }
+
+    public TradeDataEntity(int id, String name, String symbol) {
 
     }
 

@@ -11,7 +11,6 @@ public class TradeApp {
     public static void main(String[] args) {
         SpringApplication.run(TradeApp.class, args);
 
-
         System.out.println("http://localhost:8282/trader");
         System.out.println("http://localhost:8282/");
     }

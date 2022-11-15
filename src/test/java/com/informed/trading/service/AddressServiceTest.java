@@ -13,8 +13,8 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-@SpringBootTest(classes = { ServiceTestConfig.class})
-class AddressServiceTest{
+@SpringBootTest(classes = { ServiceTestConfig.class })
+class AddressServiceTest {
 
     @Autowired
     private AddressService service;

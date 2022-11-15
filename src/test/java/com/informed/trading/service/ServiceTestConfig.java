@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @DataJpaTest
 @PropertySource("classpath:TestConfig.properties") //classpath:jdbc.TestConfig.properties.properties
-@ComponentScan(basePackages = {"com.informed.trading.dao", "com.informed.trading.config"})
+@ComponentScan(basePackages = {"com.informed.trading.dao", "com.informed.trading.service"})
 @EntityScan(basePackages = {"com.informed.trading.reference"})
 @EnableJpaRepositories(basePackages = {"com.informed.trading.repo"})
 public class ServiceTestConfig {

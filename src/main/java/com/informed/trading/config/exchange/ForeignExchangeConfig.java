@@ -1,4 +1,4 @@
-package com.informed.trading.config;
+package com.informed.trading.config.exchange;
 
 import com.informed.trading.reference.ForeignExchangeRates;
 import org.springframework.beans.factory.annotation.Value;

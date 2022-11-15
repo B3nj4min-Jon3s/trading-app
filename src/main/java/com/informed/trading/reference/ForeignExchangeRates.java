@@ -2,7 +2,7 @@ package com.informed.trading.reference;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.informed.trading.config.ForeignExchangeConfig;
+import com.informed.trading.config.exchange.ForeignExchangeConfig;
 import com.informed.trading.reference.tradedata.Currency;
 import com.informed.trading.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;

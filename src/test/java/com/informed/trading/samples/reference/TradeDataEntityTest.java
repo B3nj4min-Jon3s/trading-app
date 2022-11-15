@@ -1,4 +1,4 @@
-package com.informed.trading.reference;
+package com.informed.trading.samples.reference;
 
 import com.informed.trading.exception.EmptyArgumentException;
 import com.informed.trading.exception.InvalidArgumentException;

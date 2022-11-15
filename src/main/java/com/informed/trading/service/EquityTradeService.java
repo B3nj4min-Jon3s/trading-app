@@ -1,7 +1,7 @@
 package com.informed.trading.service;
 
 import com.informed.trading.dao.EquityTradeDao;
-import com.informed.trading.reference.transactionaldata.EquityTrade;
+import com.informed.trading.reference.transactionalData.EquityTrade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

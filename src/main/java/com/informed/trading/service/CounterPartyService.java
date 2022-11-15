@@ -1,7 +1,7 @@
 package com.informed.trading.service;
 
 import com.informed.trading.dao.CounterPartyDao;
-import com.informed.trading.reference.transactionaldata.CounterParty;
+import com.informed.trading.reference.transactionalData.CounterParty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

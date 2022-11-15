@@ -1,11 +1,10 @@
 package com.informed.trading.reference.tradedata;
 
 import com.informed.trading.exception.InvalidSymbolArgumentException;
-import com.informed.trading.reference.transactionaldata.UniqueData;
+import com.informed.trading.reference.transactionalData.UniqueData;
 import com.informed.trading.utils.Validation;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity

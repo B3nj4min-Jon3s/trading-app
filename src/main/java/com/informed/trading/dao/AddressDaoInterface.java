@@ -1,8 +1,6 @@
 package com.informed.trading.dao;
 
-import com.informed.trading.reference.transactionaldata.Address;
-import com.informed.trading.reference.transactionaldata.CounterParty;
-import com.informed.trading.reference.transactionaldata.UniqueData;
+import com.informed.trading.reference.transactionalData.Address;
 
 import java.util.List;
 import java.util.Optional;

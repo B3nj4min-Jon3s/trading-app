@@ -1,7 +1,5 @@
-package com.informed.trading.reference.transactionaldata;
+package com.informed.trading.reference.transactionalData;
 
-import com.informed.trading.exception.EmptyArgumentException;
-import com.informed.trading.exception.InvalidArgumentException;
 import com.informed.trading.exception.InvalidPostcodeException;
 import com.informed.trading.utils.Util;
 import com.informed.trading.utils.Validation;
@@ -54,6 +52,8 @@ public class Address extends UniqueData {
             throw new InvalidPostcodeException("Please enter a valid postcode");
         }
     }
+
+
 
     public String getLine1() {
         return line1;

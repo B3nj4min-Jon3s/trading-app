@@ -1,4 +1,4 @@
-package com.informed.trading.reference.transactionaldata;
+package com.informed.trading.reference.transactionalData;
 
 import javax.persistence.*;
 

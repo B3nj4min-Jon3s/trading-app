@@ -43,11 +43,11 @@ function display() {
             html += "</div>";
             html += "<h3>" + counterParty.name + "</h3>";
             html += "<div>"
-            html += "<p><b>phone: </b>" + counterParty.phoneNumber + "</p>";
-            html += "<p><b>email: </b>" + counterParty.emailAddress + "</p>";
+            html += "<p><b>Phone: </b>" + counterParty.phoneNumber + "</p>";
+            html += "<p><b>Email: </b>" + counterParty.emailAddress + "</p>";
             html += "</div>";
             html += "<div>";
-            html += "<p>Address</p>"
+            html += "<p class='cp-address'><b>Address</b></p>"
             html += "<ul class='data-list'>";
             html += "<li><b>Line 1: </b>" + counterParty.address.line1 + "</li>";
             html += "<li><b>Line 2: </b>" + counterParty.address.line2 + "</li>";

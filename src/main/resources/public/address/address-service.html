@@ -129,34 +129,57 @@
     </div>
 
     <!-- Update Modal -->
-    <!-- <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Update Currency</h5>
+                    <h5 class="modal-title">Update Equity</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="currency-form-update">
-                        <div class="form-group">
-                            <input type="number" name="id" id="id-update" class="hidden" readonly>
-                        </div>
+                    <form id="update-form">
                         <div class="form-group mb-25">
-                            <label for="currencyName-update">Currency Name</label>
-                            <input type="text" class="form-control" id="currencyName-update" aria-describedby="nameHelp"
-                                placeholder="Enter currency name" name="name">
-                            <small id="nameHelp-update" class="form-text text-muted">Only standard text characters
-                                allowed.</small>
+                            <label for="id-update">ID</label>
+                            <input type="number" class="form-control" name="id" id="id-update" readonly>
                         </div>
-                        <div class="form-group mb-25">
-                            <label for="currencySymbol-update">Currency Symbol</label>
-                            <input type="text" class="form-control" id="currencySymbol-update"
-                                placeholder="Enter currency symbol" name="symbol">
-                            <small id="symbolHelp-update" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
-                                standard text characters allowed.</small>
+                        <div class="form-group mb-10">
+                            <label for="addrLine1-update">Address Line 1</label>
+                            <input type="text" class="form-control" id="addrLine1-update" aria-describedby="nameHelp"
+                                placeholder="Address line 1" name="line1" required>
+                            <small id="nameHelp" class="form-text text-muted">Text and numbers allowed</small>
+                        </div>
+                        <div class="form-group mb-10">
+                            <label for="addrLine2-update">Address Line 2</label>
+                            <input type="text" class="form-control" id="addrLine2-update"
+                                placeholder="Address line 2" name="line2" aria-describedby="symbolHelp" >
+                            <small id="symbolHelp" class="form-text text-muted">Text only</small>
+                        </div>
+                        <div class="form-group mb-10">
+                            <label for="addrLine3-update">Address Line 3</label>
+                            <input type="text" class="form-control" id="addrLine3-update"
+                                placeholder="Address line 3" name="line3" aria-describedby="symbolHelp" >
+                            <small id="symbolHelp" class="form-text text-muted">Text only</small>
+                        </div>
+                        <div class="form-group mb-10">
+                            <label for="city-update">City</label>
+                            <input type="text" class="form-control" id="city-update" aria-describedby="nameHelp"
+                                placeholder="City" name="city" required>
+                            <small id="nameHelp" class="form-text text-muted">Text only</small>
+                        </div>
+                        <div class="form-group mb-10">
+                            <label for="county-update">County</label>
+                            <input type="text" class="form-control" id="county-update" aria-describedby="nameHelp"
+                                placeholder="County" name="county" required>
+                            <small id="nameHelp" class="form-text text-muted">Text only</small>
+                        </div>
+                        <div class="form-group mb-10">
+                            <label for="postcode-update">Postcode</label>
+                            <input type="text" class="form-control" id="postcode-update" aria-describedby="nameHelp"
+                                placeholder="Postcode" name="postcode" required>
+                            <small id="nameHelp" class="form-text text-muted">Text and numbers allowed</small>
                         </div>
                         <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
                     </form>
@@ -166,7 +189,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"

@@ -8,11 +8,11 @@ $(function () {
         addExchange(data);
     });
 
-    $("#currency-form-update").submit(function (event) {
+    $("#update-form").submit(function (event) {
 
         const obj = $(this).serializeJSON();
         const data = JSON.stringify(obj);
-        updateExchanges(data);
+        updateExchange(data);
     });
 
 });
@@ -25,7 +25,7 @@ function displayExchanges() {
             html += "<div class='data-card'>"
             html += "<div class='hover-edit'>";
             html += "<button class='delete edit-icon' onclick=deleteById(" + exchange.id + ")><i class='fa-solid fa-trash'></i></button>";
-            html += "<button class='update edit-icon' onclick=openUpdateModal(" + exchange.id + ", " + exchange.name + ", " + exchange.symbol + ")><i class='fa-solid fa-pen-to-square'></i></button>";
+            html += "<button class='update edit-icon' data-bs-target='#updateModal' data-bs-toggle='modal' onclick='openUpdateModal(" + exchange.id + ",\"" + exchange.name + "\",\"" + exchange.symbol + "\")'><i class='fa-solid fa-pen-to-square'></i></button>";
             html += "</div>";
             html += "<h3>" + exchange.name + " | " + exchange.symbol + "</h3>";
             html += "</div>";
@@ -52,17 +52,14 @@ function deleteById(id) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 
 function setUpdateModalFields(id, name, symbol) {
-    console.log("id: " + id);
-    console.log("name: " + name);
-    console.log("symbol: " + symbol);
     $("#id-update").val(id);
-    $("#currencyName-update").val(name);
-    $("#currencySymbol-update").val(symbol);
+    $("#name-update").val(name);
+    $("#nymbol-update").val(symbol);
 }
 
 function openUpdateModal(id, name, symbol) {
@@ -88,7 +85,7 @@ function updateExchange(exchange) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 
@@ -115,7 +112,7 @@ function addExchange(exchange) {
 
     displayPromise.then(
         function (value) {
-            location.reload();
+            window.location.reload();
         },
         function (error) { /* code if some error */ }
     )

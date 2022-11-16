@@ -76,9 +76,15 @@ public class EquityTradeController {
 
     }
 
+    /**
+     * Get value of existing trade in specified currency. Throw item not found exceptions if trade or currency not found
+     * @param tradeId int - id of the trade
+     * @param currencyId id of the chosen currency
+     * @return value of trade in chosen currency
+     */
     @GetMapping("/trade/{tradeId}/value/{currencyId}")
     @ResponseStatus(HttpStatus.OK)
-    public Double getValueOfEquityTradeCurrency(@PathVariable int tradeId, @PathVariable int currencyId) {
+    public double getValueOfEquityTradeCurrency(@PathVariable int tradeId, @PathVariable int currencyId) {
         System.out.println("EquityTrade.getEquityTrade()");
         Optional<EquityTrade> equityTrade = equityTradeService.getEquityTradeById(tradeId);
         if (equityTrade.isPresent()) {

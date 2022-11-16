@@ -3,62 +3,107 @@
 
 
 
-//package com.informed.trading.reference.transactionaldata;
-//
-//import com.informed.trading.exception.EmptyArgumentException;
-//import com.informed.trading.exception.InvalidArgumentException;
-//import com.informed.trading.reference.tradedata.Currency;
-//import com.informed.trading.reference.tradedata.Equity;
-//import com.informed.trading.reference.tradedata.Exchange;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-//
-//import java.util.Date;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//class EquityTradeTest {
-//
-//    private Address a1;
-//    private CounterParty cp1;
-//    private CounterParty cp2;
-//    private Equity eq1;
-//    private Currency c1;
-//    private Exchange ex1;
-//    private EquityTrade et1;
-//
-//    @BeforeEach
-//    void setUp() {
-//        a1 = new Address("line1", "line two", "line three", "city", "county", "BL09UG");
-//        cp1 = new CounterParty("name", "Phoneno", "email", a1);
-//        cp2 = new CounterParty("n", "pn", "email", a1);
-//        eq1 = new Equity("name", "LND");
-//        c1 = new Currency("name", "GBP");
-//        ex1 = new Exchange("name", "GBP");
-//        et1 = new EquityTrade(cp1, cp2, new Date(), eq1, 12, 2.0, c1, ex1);
-//        System.out.println(et1);
-//    }
-//
-//    @Test
-//    void setCounterParty2() {
-//        assertThrows(InvalidArgumentException.class, () -> new EquityTrade(null, cp2,new Date(), eq1, 12, 1.5, c1, ex1));
-//    }
-//
-//    @Test
-//    void setCounterParty1() {
-//        assertThrows(InvalidArgumentException.class, () -> new EquityTrade(cp1, null, new Date(), eq1, 12, 1.5, c1, ex1));
-//        assertThrows(EmptyArgumentException.class, () -> new EquityTrade(cp1, cp1, new Date(), eq1, 12, 1.2, c1, ex1));
-//    }
-//
-//    @Test
-//    void getValueOfTrade() {
-//        System.out.println(et1);
-//        assertEquals(24, et1.getValueOfTrade(), "the value of this trade should be 24 (derived from 12 x 2)");
-//    }
-//
-//    @Test
-//    void getValueInCurrencyTest(){
-//
-//    }
-//
-//}
+package com.informed.trading.reference.transactionaldata;
+
+import com.informed.trading.exception.EmptyArgumentException;
+import com.informed.trading.exception.InvalidArgumentException;
+import com.informed.trading.reference.ForeignExchangeRates;
+import com.informed.trading.reference.tradedata.Currency;
+import com.informed.trading.reference.tradedata.Equity;
+import com.informed.trading.reference.tradedata.Exchange;
+import com.informed.trading.reference.transactionalData.Address;
+import com.informed.trading.reference.transactionalData.CounterParty;
+import com.informed.trading.reference.transactionalData.EquityTrade;
+import com.informed.trading.service.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest(classes = { ServiceTestConfig.class})
+class EquityTradeTest {
+
+    private Address a1;
+    private CounterParty cp1;
+    private CounterParty cp2;
+    private Equity eq1;
+    private Currency c1;
+    private Exchange ex1;
+    private EquityTrade et1;
+
+    private ForeignExchangeRates fe;
+    private Currency c2;
+
+    @Autowired
+    public void setForeignExchange(ForeignExchangeRates fe) {
+        this.fe = fe;
+    }
+    @Autowired
+    private EquityTradeService etService;
+    @Autowired
+    private CounterPartyService cpService;
+    @Autowired
+    private AddressService addrService;
+    @Autowired
+    private RefDataService refService;
+
+
+    @BeforeEach
+    void setUp() {
+        a1 = new Address("line1", "line two", "line three", "city", "county", "BL09UG");
+        eq1 = new Equity("name", "LND");
+        c1 = new Currency("name", "GBP");
+        c2 = new Currency("name", "USD");
+        ex1 = new Exchange("name", "GBP");
+
+        addrService.addAddress(a1);
+        cp1 = new CounterParty("name", "07805755934", "email", a1);
+        cp2 = new CounterParty("n", "07367483772", "email", a1);
+        cpService.addCounterParties(cp1);
+        CounterParty cp1 = cpService.getAllCounterParties().get(0);
+        cpService.addCounterParties(cp2);
+        CounterParty cp2 = cpService.getAllCounterParties().get(1);
+        refService.addEquity(eq1);
+        refService.addCurrency(c1);
+        refService.addExchange(ex1);
+        et1 = new EquityTrade(
+                                cp1,
+                                cp2,
+                                refService.getAllEquities().get(0),
+                                10,
+                                20.0,
+                                refService.getAllCurrencies().get(0),
+                                refService.getAllExchanges().get(0));
+        etService.addEquityTrade(et1);
+        List<EquityTrade> equityTrades = etService.getAllEquityTrades();
+        et1 = equityTrades.get(0);
+    }
+
+    @Test
+    void setCounterParty2() {
+        assertThrows(NullPointerException.class, () -> new EquityTrade(null, cp2, eq1, 12, 1.5, c1, ex1));
+    }
+
+    @Test
+    void setCounterParty1() {
+        assertThrows(NullPointerException.class, () -> new EquityTrade(cp1, null, eq1, 12, 1.5, c1, ex1));
+        assertThrows(InvalidArgumentException.class, () -> new EquityTrade(cp1, cp1, eq1, 12, 1.2, c1, ex1));
+    }
+
+    @Test
+    void getValueOfTrade() {
+        assertEquals(200, et1.getValueOfTrade(), "the value of this trade should be 200 (derived from 20 x 10)");
+    }
+
+    @Test
+    void getValueInCurrencyTest(){
+        double valueInCurrency = et1.getValueInCurrency(c2, fe);
+        assertTrue(200 <= valueInCurrency && valueInCurrency <= 300);
+    }
+
+}

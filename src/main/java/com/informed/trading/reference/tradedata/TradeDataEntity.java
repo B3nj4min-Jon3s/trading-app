@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public abstract class TradeDataEntity extends UniqueData {
+
     @NotNull
     private String name;
     @NotNull
@@ -23,6 +24,9 @@ public abstract class TradeDataEntity extends UniqueData {
         super();
         this.name = Validation.checkStringNotNullEmptyAndOnlyLetters(name, "Name");
         setSymbol(symbol);
+    }
+
+    public TradeDataEntity(int id, String name, String symbol) {
 
     }
 

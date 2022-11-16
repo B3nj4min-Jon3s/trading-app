@@ -5,29 +5,30 @@ h1 {
     font-weight: 500 !important;
 }
 
-.h2 {
-    font-size: 65px !important;
+h2 {
+    font-size: 48px !important;
 }
 
 .title-1 {
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 .section {
-    background-color: aqua;
-    padding: 50px 150px;
+    padding: 75px 150px;
+}
+
+.mb-25 { 
+    margin-bottom: 25px;
+}
+
+.mb-10 { 
+    margin-bottom: 10px;
 }
 
 /* NAVBAR */
 
 .nav-padding {
-    padding: 20px 40px !important;
-    margin-left: 50px !important;
-}
-
-.nav-padding {
-    margin-left: 50px !important;
-    padding-left: 100px !important;
+    padding: 20px 150px !important;
 }
 
 .nav-display {
@@ -35,6 +36,19 @@ h1 {
     justify-content: space-between;
 }
 
+.nav-right {
+    justify-content: end;
+    font-size: 20px;
+}
+
+.nav-icon {
+    font-size: 50px;
+}
+
+.header-icon {
+    font-size: 75px;
+    margin-bottom: 25px;
+}
 
 /* HEADER */
 
@@ -45,7 +59,7 @@ h1 {
 }
 
 .header-text-box {
-    padding: 25px 50px;
+    padding: 50px 50px;
     background-color: rgba(255, 255, 255, 0.178);
     color: #fff;
     border-radius: 10px;
@@ -59,3 +73,90 @@ h1 {
 .header-text-box button {
     font-size: 35px !important;
 }
+
+/* PAGE HEADER */
+.standard-header {
+    width: 100vw;
+    height: 60vh;
+    background-image: linear-gradient(to bottom, rgba(17, 22, 48, 0.52), rgba(117, 19, 93, 0.73)), url("../img/trading-header.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/*  SERVICES  */
+
+.services-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%; 
+    gap: 50px;
+}
+
+/* DATA */
+
+#data-container {
+}
+
+.editable-data {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 50px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.hover-edit {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 0.2s;
+    color: #fff;
+}
+
+.edit-icon {
+    font-size: 20px;
+}
+
+.data-card {
+    padding: 20px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    list-style-type: none !important;
+}
+
+.data-list {
+    font-size: 20px;
+    text-align: left;
+    list-style-type: none !important;
+
+}
+
+.data-list li {
+    list-style-type: none !important;
+
+}
+
+.counter-party { 
+    text-align: left !important;
+}
+
+.counter-party h3 {
+    text-align: center !important;
+}
+
+/* .data-wrapper:hover .hover-edit {
+    display:flex;
+} */

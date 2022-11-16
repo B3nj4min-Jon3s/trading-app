@@ -13,4 +13,9 @@ public class Currency extends TradeDataEntity {
     public Currency(String name, String symbol) {
         super(name, symbol);
     }
+
+    public Currency(int id, String name, String symbol) {
+        super(id, name, symbol);
+    }
+
 }

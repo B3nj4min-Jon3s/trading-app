@@ -83,21 +83,19 @@
         </div>
         <div class="add-button mb-25">
             <button type="button" id="add-currency" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#currencyModal"><i class="fa-solid fa-plus"></i> Add
+                data-bs-target="#addModal"><i class="fa-solid fa-plus"></i> Add
                 Currency</button>
         </div>
-
 
 
         <div id="data-container">
 
         </div>
 
-
     </section>
 
     <!-- Add New Modal -->
-    <div class="modal fade" id="currencyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -108,19 +106,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="currency-form">
+                    <form id="add-form">
                         <div class="form-group mb-25">
-                            <label for="currencyName">Currency Name</label>
-                            <input type="text" class="form-control" id="currencyName" aria-describedby="nameHelp"
-                                placeholder="Enter currency name" name="name">
+                            <label for="addName">Currency Name</label>
+                            <input type="text" class="form-control" id="addName" aria-describedby="nameHelp"
+                                placeholder="Enter currency name" name="name" required>
                             <small id="nameHelp" class="form-text text-muted">Only standard text characters
                                 allowed.</small>
                         </div>
                         <div class="form-group mb-25">
-                            <label for="currencySymbol">Currency Symbol</label>
-                            <input type="text" class="form-control" id="currencySymbol"
-                                placeholder="Enter currency symbol" name="symbol">
-                            <small id="symbolHelp" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                            <label for="addSymbol">Currency Symbol</label>
+                            <input type="text" class="form-control" id="addSymbol"
+                                placeholder="Enter currency symbol" name="symbol" aria-describedby="symbolHelp" required>
+                            <small id="symbolHelp" class="form-text text-muted">Only up to 3
                                 standard text characters allowed.</small>
                         </div>
                         <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>

@@ -14,11 +14,15 @@ h2 {
 }
 
 .section {
-    padding: 50px 150px;
+    padding: 75px 150px;
 }
 
 .mb-25 { 
     margin-bottom: 25px;
+}
+
+.mb-10 { 
+    margin-bottom: 10px;
 }
 
 /* NAVBAR */
@@ -117,9 +121,6 @@ h2 {
     justify-content: space-evenly;
     transition: 0.2s;
     color: #fff;
-    position: relative;
-    bottom: 0;
-    left: 0;
 }
 
 .edit-icon {
@@ -130,6 +131,30 @@ h2 {
     padding: 20px;
     border: 1px solid rgb(185, 185, 185);
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    list-style-type: none !important;
+}
+
+.data-list {
+    font-size: 20px;
+    text-align: left;
+    list-style-type: none !important;
+
+}
+
+.data-list li {
+    list-style-type: none !important;
+
+}
+
+.counter-party { 
+    text-align: left !important;
+}
+
+.counter-party h3 {
+    text-align: center !important;
 }
 
 /* .data-wrapper:hover .hover-edit {

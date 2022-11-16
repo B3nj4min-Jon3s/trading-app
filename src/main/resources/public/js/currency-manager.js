@@ -8,7 +8,7 @@ $(function () {
         addCurrency(data);
     });
 
-    $("#currency-form-update").submit(function (event) {
+    $("#update-form").submit(function (event) {
 
         const obj = $(this).serializeJSON();
         const data = JSON.stringify(obj);
@@ -24,7 +24,7 @@ function displayCurrencies() {
             html += "<div class='data-card'>"
             html += "<div class='hover-edit'>";
             html += "<button class='delete edit-icon' onclick=deleteById(" + currency.id + ")><i class='fa-solid fa-trash'></i></button>";
-            html += "<button class='update edit-icon' onclick=openUpdateModal(" + currency.id + ", " + currency.name + ", " + currency.symbol + ")><i class='fa-solid fa-pen-to-square'></i></button>";
+            html += "<button class='update edit-icon' data-bs-target='#updateModal' data-bs-toggle='modal' onclick='openUpdateModal(" + currency.id + ",\"" + currency.name + "\",\"" + currency.symbol + "\")'><i class='fa-solid fa-pen-to-square'></i></button>";
             html += "</div>";
             html += "<h3>" + currency.name + " | " + currency.symbol + "</h3>";
             html += "</div>";
@@ -52,7 +52,7 @@ function deleteById(id) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 
@@ -89,7 +89,7 @@ function updateCurrency(currency) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 
@@ -113,7 +113,7 @@ function addCurrency(currency) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 

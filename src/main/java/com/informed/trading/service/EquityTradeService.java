@@ -12,22 +12,17 @@ import java.util.Optional;
 public class EquityTradeService {
 
     private EquityTradeDao dao;
-
     @Autowired
     public void setDao(EquityTradeDao dao) {
         this.dao = dao;
     }
-
     public List<EquityTrade> getAllEquityTrades() {return dao.getAllEquityTrades();
     }
-
     public void addEquityTrade(EquityTrade equityTrade) {dao.addEquityTrade(equityTrade);
     }
-
     public boolean deleteEquityTradeById(int id) {
         return dao.deleteEquityTradeById(id);
     }
-
     public Optional<EquityTrade> getEquityTradeById(int id) {
         return dao.getEquityTradeById(id);
     }

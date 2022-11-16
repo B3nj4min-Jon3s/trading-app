@@ -25,7 +25,7 @@ function display() {
             html += "<div class='data-card'>"
             html += "<div class='hover-edit'>";
             html += "<button class='delete edit-icon' onclick=deleteById(" + address.id + ")><i class='fa-solid fa-trash'></i></button>";
-            html += "<button class='update edit-icon' onclick=openUpdateModal(" + address.id + ", " + address.line1 + ", " + address.line2 + ")><i class='fa-solid fa-pen-to-square'></i></button>";
+            html += "<button class='update edit-icon' data-bs-target='#updateModal' data-bs-toggle='modal' onclick='openUpdateModal(" + address.id + ",\"" + address.line1 + "\",\"" + address.line2 + "\",\"" + address.line3 + "\",\"" + address.city + "\",\"" + address.county + "\",\"" + address.postcode + "\")'><i class='fa-solid fa-pen-to-square'></i></button>";
             html += "</div>";
             html += "<ul class='data-list'>";
             html += "<li><b>Line 1: </b>" + address.line1 + "</li>";
@@ -60,17 +60,18 @@ function deleteById(id) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 
-function setUpdateModalFields(id, name, symbol) {
+function setUpdateModalFields(id, line1, line2, line3, city, county, postcode) {
     $("#id-update").val(id);
-    $("#currencyName-update").val(name);
-    $("#currencySymbol-update").val(symbol);
-    console.log("id: " + id);
-    console.log("name: " + name);
-    console.log("symbol: " + symbol);
+    $("#addrLine1-update").val(line1);
+    $("#addrLine2-update").val(line2);
+    $("#addrLine3-update").val(line3);
+    $("#city-update").val(city);
+    $("#county-update").val(county);
+    $("#postcode-update").val(postcode);
 }
 
 function openUpdateModal(id, name, symbol) {
@@ -97,7 +98,7 @@ function update(data) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 
@@ -121,7 +122,7 @@ function add(data) {
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
-        location.reload();
+        window.location.reload();
     });
 }
 

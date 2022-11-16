@@ -1,32 +1,32 @@
 $(function () {
-    displayCurrencies();
+    displayEquities();
 
     $("#add-form").submit(function (event) {
 
         const obj = $(this).serializeJSON();
         const data = JSON.stringify(obj);
-        addCurrency(data);
+        addEquity(data);
     });
 
     $("#currency-form-update").submit(function (event) {
 
         const obj = $(this).serializeJSON();
         const data = JSON.stringify(obj);
-        updateCurrency(data);
+        updateEquities(data);
     });
 });
 
-function displayCurrencies() {
-    $.get("http://localhost:8282/trader/currencies", function (currencies) {
+function displayEquities() {
+    $.get("http://localhost:8282/trader/equities", function (equities) {
         $("#data-container").empty();
         let html = "<div class='editable-data'>";
-        $.each(currencies, function (i, currency) {
+        $.each(equities, function (i, equity) {
             html += "<div class='data-card'>"
             html += "<div class='hover-edit'>";
-            html += "<button class='delete edit-icon' onclick=deleteById(" + currency.id + ")><i class='fa-solid fa-trash'></i></button>";
-            html += "<button class='update edit-icon' onclick=openUpdateModal(" + currency.id + ", " + currency.name + ", " + currency.symbol + ")><i class='fa-solid fa-pen-to-square'></i></button>";
+            html += "<button class='delete edit-icon' onclick=deleteById(" + equity.id + ")><i class='fa-solid fa-trash'></i></button>";
+            html += "<button class='update edit-icon' onclick=openUpdateModal(" + equity.id + ", " + equity.name + ", " + equity.symbol + ")><i class='fa-solid fa-pen-to-square'></i></button>";
             html += "</div>";
-            html += "<h3>" + currency.name + " | " + currency.symbol + "</h3>";
+            html += "<h3>" + equity.name + " | " + equity.symbol + "</h3>";
             html += "</div>";
         });
         html += "</div>";
@@ -35,9 +35,10 @@ function displayCurrencies() {
 }
 
 function deleteById(id) {
+    console.log("Delete: " + id);
 
     let promise = new Promise(function (resolve, reject) {
-        let urlStr = "http://localhost:8282/admin/currency/" + id;
+        let urlStr = "http://localhost:8282/admin/equity/" + id;
         $.ajax({
             type: "DELETE",
             url: urlStr
@@ -45,10 +46,9 @@ function deleteById(id) {
         resolve(); // when successful
     });
 
-    // "Consuming Code" (Must wait for a fulfilled Promise)
     promise.then(
         function (value) {
-            displayCurrencies();
+            displayEquities();
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
@@ -69,23 +69,22 @@ function openUpdateModal(id, name, symbol) {
     setUpdateModalFields(id, name, symbol);
 }
 
-function updateCurrency(currency) {
+function updateEquity(equity) {
 
     let promise = new Promise(function (resolve, reject) {
         $.ajax({
             type: "PUT",
-            url: "http://localhost:8282/admin/currency",
-            data: currency,
+            url: "http://localhost:8282/admin/equity",
+            data: equity,
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         });
         resolve(); // when successful
     });
 
-    // "Consuming Code" (Must wait for a fulfilled Promise)
     promise.then(
         function (value) {
-            displayCurrencies();
+            displayEquities();
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {
@@ -93,23 +92,22 @@ function updateCurrency(currency) {
     });
 }
 
-function addCurrency(currency) {
+function addEquity(equity) {
 
     let promise = new Promise(function (resolve, reject) {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8282/admin/currency",
-            data: currency,
+            url: "http://localhost:8282/admin/equity",
+            data: equity,
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         });
         resolve(); // when successful
     });
 
-    // "Consuming Code" (Must wait for a fulfilled Promise)
     promise.then(
         function (value) {
-            displayCurrencies();
+            displayEquities();
         },
         function (error) { /* code if some error */ }
     ).then(function (value) {

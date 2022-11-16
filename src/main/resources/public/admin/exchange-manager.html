@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Team Trader | Exchange Manager</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="../js/exchange-manager.js"></script>
+    <script src="../js/jquery.serializejson.js"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://kit.fontawesome.com/913bafd615.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-display nav-padding justify-between">
+        <a class="navbar-brand" href="./index.html"><i class="fa-solid fa-comments-dollar nav-icon"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse nav-padding nav-right" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../currency-service.html">Currencies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../equity-service.html">Equities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../exchange-service.html">Exchanges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../counter-party/counter-party-service.html">Counter Party</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../equity-trade/equity-trade-service.html">Equity Trade</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../address/address-service.html">Address</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./admin-portal.html">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="standard-header">
+            <h1>Exchange Manager</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="title-1">
+            <h2>Manage Exchanges</h2>
+        </div>
+        <div class="add-button mb-25">
+            <button type="button" id="add" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#addModal"><i class="fa-solid fa-plus"></i> Add
+                Exchange</button>
+        </div>
+
+
+
+        <div id="data-container">
+
+        </div>
+
+
+    </section>
+
+    <!-- Add New Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Exchange</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-form">
+                        <div class="form-group mb-25">
+                            <label for="addName">Exchange Name</label>
+                            <input type="text" class="form-control" id="addName" aria-describedby="nameHelp"
+                                placeholder="Enter exchange name" name="name" required>
+                            <small id="nameHelp" class="form-text text-muted">Only standard text characters
+                                allowed.</small>
+                        </div>
+                        <div class="form-group mb-25">
+                            <label for="addSymbol">Exchange Symbol</label>
+                            <input type="text" class="form-control" id="addSymbol"
+                                placeholder="Enter exchange symbol" name="symbol" aria-describedby="symbolHelp" required>
+                            <small id="symbolHelp" class="form-text text-muted">Only up to 3
+                                standard text characters allowed.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Modal -->
+    <!-- <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Currency</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="currency-form-update">
+                        <div class="form-group">
+                            <input type="number" name="id" id="id-update" class="hidden" readonly>
+                        </div>
+                        <div class="form-group mb-25">
+                            <label for="currencyName-update">Currency Name</label>
+                            <input type="text" class="form-control" id="currencyName-update" aria-describedby="nameHelp"
+                                placeholder="Enter currency name" name="name">
+                            <small id="nameHelp-update" class="form-text text-muted">Only standard text characters
+                                allowed.</small>
+                        </div>
+                        <div class="form-group mb-25">
+                            <label for="currencySymbol-update">Currency Symbol</label>
+                            <input type="text" class="form-control" id="currencySymbol-update"
+                                placeholder="Enter currency symbol" name="symbol">
+                            <small id="symbolHelp-update" aria-describedby="nameHelp" class="form-text text-muted">Only up to 3
+                                standard text characters allowed.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="add" name="add">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
+        integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+</body>
+
+</html>

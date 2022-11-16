@@ -11,9 +11,6 @@ import javax.validation.constraints.NotNull;
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public abstract class TradeDataEntity extends UniqueData {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private int id;
     @NotNull
     private String name;
     @NotNull

@@ -26,12 +26,12 @@ public class Address extends UniqueData {
 
     public Address(String line1, String line2, String line3, String city, String county, String postcode) {
         super();
-        this.line1 = Validation.checkStringNotNullEmptyAndOnlyLettersNumbers(line1, "Address Line 1");
-        this.line2 = checkOptionalAddressInput(line2, "Address Line 2");
-        this.line3 = checkOptionalAddressInput(line3, "Address Line 3");
-        this.city = Validation.checkStringNotNullEmptyAndOnlyLetters(city, "City");
-        this.county = Validation.checkStringNotNullEmptyAndOnlyLetters(county, "County");
-        this.postcode = checkValidPostcode(postcode);
+        this.setLine1(line1);
+        this.setLine2(line2);
+        this.setLine3(line3);
+        this.setCity(city);
+        this.setCounty(county);
+        this.setPostcode(postcode);
     }
 
     private String checkOptionalAddressInput(String input, String inputName) {
@@ -53,7 +53,24 @@ public class Address extends UniqueData {
         }
     }
 
-
+    public void setLine1(String line1) {
+        this.line1 = Validation.checkStringNotNullEmptyAndOnlyLettersNumbers(line1, "Address Line 1");
+    }
+    public void setLine2(String line2) {
+        this.line2 = checkOptionalAddressInput(line2, "Address Line 2");
+    }
+    public void setLine3(String line3) {
+        this.line3 = checkOptionalAddressInput(line3, "Address Line 3");
+    }
+    public void setCity(String city) {
+        this.city = Validation.checkStringNotNullEmptyAndOnlyLetters(city, "City");
+    }
+    public void setCounty(String county) {
+        this.county = Validation.checkStringNotNullEmptyAndOnlyLetters(county, "County");
+    }
+    public void setPostcode(String postcode) {
+        this.postcode = checkValidPostcode(postcode);
+    }
 
     public String getLine1() {
         return line1;
